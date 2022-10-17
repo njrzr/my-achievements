@@ -599,10 +599,6 @@ video {
   position: fixed;
 }
 
-.absolute{
-  position: absolute;
-}
-
 .relative{
   position: relative;
 }
@@ -662,8 +658,8 @@ video {
   height: 4rem;
 }
 
-.h-10{
-  height: 2.5rem;
+.h-12{
+  height: 3rem;
 }
 
 .h-56{
@@ -690,10 +686,6 @@ video {
   width: 91.666667%;
 }
 
-.w-10{
-  width: 2.5rem;
-}
-
 .w-12{
   width: 3rem;
 }
@@ -704,27 +696,6 @@ video {
 
 .w-6{
   width: 1.5rem;
-}
-
-@-webkit-keyframes ping{
-  75%, 100%{
-    -webkit-transform: scale(2);
-            transform: scale(2);
-    opacity: 0;
-  }
-}
-
-@keyframes ping{
-  75%, 100%{
-    -webkit-transform: scale(2);
-            transform: scale(2);
-    opacity: 0;
-  }
-}
-
-.animate-ping{
-  -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
-          animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
 .flex-col{

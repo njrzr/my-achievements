@@ -9,16 +9,18 @@ function Achievements(props) {
 
   useEffect(() => {
     axios({
-      url: 'https://xbl.io/api/v2/achievements',
-      method: 'get',
+      url: 'https://njrzr-express-server.netlify.app/.netlify/functions/api/xbl',
+      method: 'GET',
       headers: {
         "X-Authorization": "kkkw8co804wgcg0cksgcks40cc44cc0gck0",
-        "Accept": "application/json"
+        "Accept": "application/json",
+        "Target-URL": "https://xbl.io/api/v2/achievements?"
       }
     }).then(response => setResponse(response.data))
       .catch(error => console.log('error', error));
 
     const setResponse = (response) => {
+      console.log(response);
       setBackground(response);
       setGames(response);
     }

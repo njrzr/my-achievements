@@ -10,8 +10,8 @@ function App() {
   return (
     <div className="App">
       { achievementFlag !== true &&
-        <div className="fixed flex justify-center items-center top-0 z-10 w-screen h-screen bg-terciary">
-          <img className="w-80 h-80 loader" src={ Loader } alt="Loader"></img>
+        <div className="fixed flex justify-center items-center top-0 z-10 w-screen h-screen bg-secondary">
+          <img className="w-80 h-80 loader rounded-full" src={ Loader } alt="Loader"></img>
         </div>
       }
       

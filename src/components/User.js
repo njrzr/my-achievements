@@ -9,17 +9,19 @@ function User() {
 
   useEffect(() => {
     axios({
-      url: 'https://xbl.io/api/v2/account',
-      method: 'get',
+      url: 'https://njrzr-express-server.netlify.app/.netlify/functions/api/xbl',
+      method: 'GET',
       headers: {
         "X-Authorization": "kkkw8co804wgcg0cksgcks40cc44cc0gck0",
-        "Accept": "application/json"
+        "Accept": "application/json",
+        "Target-URL": "https://xbl.io/api/v2/account?"
       }
     }).then(response => setResponse(response.data))
       .catch(err => console.log(err));
   }, []);
 
   const setResponse = (response) => {
+    console.log(response)
     setPicture(response["profileUsers"][0].settings[0].value);
     setGamerscore(response["profileUsers"][0].settings[1].value);
     setUsername(response["profileUsers"][0].settings[2].value);
