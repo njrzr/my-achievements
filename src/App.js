@@ -1,7 +1,7 @@
 import User from './components/User';
 import Achievements from './components/Achievements';
 import Footer from './components/Footer';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Loader from './images/loader.webp'
 
 function App() {
