@@ -10,16 +10,18 @@ module.exports = {
       'backgroundColor': {
         'primary': '#ED5588',
         'secondary': '#57172D',
-        'terciary': '#9E2950'
+        'terciary': '#9E2950',
+        'platinum': '#E5E4E2'
       },
       'textColor' : {
         'primary': '#ED5588',
         'secondary': '#57172D',
-        'terciary': '#9E2950'
+        'terciary': '#9E2950',
+        'platinum': '#E5E4E2'
       },
       'fontFamily': {
         'orbitron': 'Orbitron',
-        'press': 'Press Start 2P'
+        'press': 'Press\\ Start\\ 2P'
       },
       'dropShadow': {
         'text': '2px 2px 2px #9E2950'
