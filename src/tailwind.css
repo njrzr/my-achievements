@@ -638,16 +638,16 @@ video {
   display: flex;
 }
 
+.hidden{
+  display: none;
+}
+
 .h-screen{
   height: 100vh;
 }
 
 .h-80{
   height: 20rem;
-}
-
-.h-\[300px\]{
-  height: 300px;
 }
 
 .h-40{
@@ -897,6 +897,10 @@ video {
 
   .md\:block{
     display: block;
+  }
+
+  .md\:h-\[300px\]{
+    height: 300px;
   }
 
   .md\:h-56{
