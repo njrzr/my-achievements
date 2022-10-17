@@ -71,8 +71,13 @@ function Achievements(props) {
   return (
     <div className="relative flex flex-wrap w-full md:w-11/12 my-1 md:my-2 mx-auto p-4 md:p-1">
       { achievements.map(value => {
+          const httpImg = value.displayImage;
+          const regex = /http:\/\//g;
+          const found = httpImg.match(regex);
+          const httpsImg = httpImg.replace(found, "https://");
+          
           return <div key={ value["titleId"] } className="relative w-full md:w-1/4 overflow-hidden my-1 md:my-auto md:p-1 transition duration-200 z-0 md:hover:scale-105 md:hover:z-10">
-                  <img src={ value.displayImage } className="object-contain bg-terciary bg-opacity-50 h-[300px] w-full mx-auto" alt="Game pic">
+                  <img src={ httpsImg } className="object-contain bg-terciary bg-opacity-50 h-[300px] w-full mx-auto" alt="Game pic">
                   </img>
                   <div className={`flex flex-col justify-between p-2 h-40 bg-opacity-50 ${ value.achievement.totalGamerscore === value.achievement.currentGamerscore && value.achievement["sourceVersion"] !== 0 ? 'bg-platinum' : 'bg-terciary' }`}>
                     <p className="font-orbitron font-bold text-2xl md:text-2xl text-white drop-shadow-text">{ value.name }</p>

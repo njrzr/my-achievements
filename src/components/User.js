@@ -21,7 +21,6 @@ function User() {
   }, []);
 
   const setResponse = (response) => {
-    console.log(response)
     setPicture(response["profileUsers"][0].settings[0].value);
     setGamerscore(response["profileUsers"][0].settings[1].value);
     setUsername(response["profileUsers"][0].settings[2].value);
