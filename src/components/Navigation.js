@@ -50,11 +50,11 @@ function Navigation(props) {
           </button>
         }
         { index < 1 ?
-          <button className="hidden md:block text-secondary bg-white transition duration-300 w-12 h-12" disabled>
+          <button className="hidden md:inline text-secondary bg-white transition duration-300 w-12 h-12" disabled>
             <FontAwesomeIcon icon={ faAnglesLeft } />
           </button>
           :
-          <button onClick={ (e) => previousBtn(1, e) } className="hidden md:block text-primary bg-secondary bg-opacity-75 transition duration-300 hover:bg-white hover:text-secondary w-12 h-12">
+          <button onClick={ (e) => previousBtn(1, e) } className="hidden md:inline text-primary bg-secondary bg-opacity-75 transition duration-300 hover:bg-white hover:text-secondary w-12 h-12">
             <FontAwesomeIcon icon={ faAnglesLeft } />
           </button>
         }
@@ -83,11 +83,11 @@ function Navigation(props) {
 
       <div>
         { pages - 1 < index ?
-          <button className="hidden md:block hidden md:block text-secondary bg-white transition duration-300 w-12 h-12" disabled>
+          <button className="hidden md:inline text-secondary bg-white transition duration-300 w-12 h-12" disabled>
             <FontAwesomeIcon icon={ faAnglesRight } />
           </button>
           :
-          <button onClick={ (e) => nextBtn(pages - 1, e) } className="hidden md:block hidden md:block text-primary bg-secondary bg-opacity-75 transition duration-300 hover:bg-white hover:text-secondary w-12 h-12">
+          <button onClick={ (e) => nextBtn(pages - 1, e) } className="hidden md:inline text-primary bg-secondary bg-opacity-75 transition duration-300 hover:bg-white hover:text-secondary w-12 h-12">
             <FontAwesomeIcon icon={ faAnglesRight } />
           </button>
         }
