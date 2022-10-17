@@ -2,27 +2,42 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Navigation from "../components/Navigation";
 
-function Achievements() {
+function Achievements(props) {
+  const { achievementF } = props
   const [achievements, setAchievements] = useState([]);
   const [titlesArr, setTitlesArr] = useState([]);
 
   useEffect(() => {
     axios({
-      url: 'http://localhost:3000',
+      url: 'https://xbl.io/api/v2/achievements',
       method: 'get',
       headers: {
         "X-Authorization": "kkkw8co804wgcg0cksgcks40cc44cc0gck0",
-        "Accept": "application/json",
-        "Target-URL": "https://xbl.io/api/v2/achievements"
+        "Accept": "application/json"
       }
     }).then(response => setResponse(response.data))
       .catch(error => console.log('error', error));
 
-      const setResponse = (response) => {
-        setBackground(response);
-        setGames(response);
+    const setResponse = (response) => {
+      setBackground(response);
+      setGames(response);
+    }
+
+    const setGames = (response) => {
+      let sliced;
+      let games = [];
+      let count = 0;
+
+      while (count < response.titles.length) {
+        if (response.titles[count].achievement.sourceVersion !== 0) games.push(response.titles[count]);
+        count++;
       }
-  }, []);
+      setTitlesArr(games);
+      sliced = games.slice(0, 12);
+      setAchievements(sliced);
+      achievementF(true);
+    }
+  }, [achievementF]);
 
   const setBackground = (response) => {
     let body = document.querySelector('body');
@@ -43,20 +58,6 @@ function Achievements() {
     }
 
     body.style = `background: url(${ background }) top no-repeat fixed; background-size: cover;`
-  }
-
-  const setGames = (response) => {
-    let sliced;
-    let games = [];
-    let count = 0;
-
-    while (count < response.titles.length) {
-      if (response.titles[count].achievement.sourceVersion !== 0) games.push(response.titles[count]);
-      count++;
-    }
-    setTitlesArr(games);
-    sliced = games.slice(0, 12);
-    setAchievements(sliced);
   }
 
   const pageGames = (response, index = 0) => {

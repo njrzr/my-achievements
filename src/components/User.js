@@ -9,12 +9,11 @@ function User() {
 
   useEffect(() => {
     axios({
-      url: 'http://localhost:3000',
+      url: 'https://xbl.io/api/v2/account',
       method: 'get',
       headers: {
         "X-Authorization": "kkkw8co804wgcg0cksgcks40cc44cc0gck0",
-        "Accept": "application/json",
-        "Target-URL": "https://xbl.io/api/v2/account"
+        "Accept": "application/json"
       }
     }).then(response => setResponse(response.data))
       .catch(err => console.log(err));
