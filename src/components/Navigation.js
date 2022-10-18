@@ -8,10 +8,15 @@ function Navigation(props) {
   
   let pages = Math.floor(titles.length / 12);
   let pagesArr = [];
+  let emptyArr = [];
   let sibling = 2;
   let space = sibling - 1;
   let sliceLeft, sliceCenter, sliceRight;
   let i = 0;
+
+  for (let i = 0;i < sibling;i++) {
+    emptyArr.push(i);
+  }
 
   while (i <= pages) {
     pagesArr.push(i);
@@ -38,69 +43,53 @@ function Navigation(props) {
   }
 
   return (
-    <div className="flex align-center justify-between flex-wrap w-full md:w-11/12 mt-2 mx-auto p-2">
-      <div>
-        { index < 1 ?
-          <button className="text-secondary bg-white transition duration-300 rounded-tl-full rounded-bl-full w-12 h-12" disabled>
-            <FontAwesomeIcon icon={ faAngleLeft } />
-          </button>
-          :
-          <button onClick={ (e) => previousBtn(index, e) } className="text-primary bg-secondary bg-opacity-75 transition duration-300 hover:bg-white hover:text-secondary rounded-tl-full rounded-bl-full w-12 h-12">
-            <FontAwesomeIcon icon={ faAngleLeft } />
-          </button>
-        }
-        { index < 1 ?
-          <button className="hidden md:inline text-secondary bg-white transition duration-300 w-12 h-12" disabled>
-            <FontAwesomeIcon icon={ faAnglesLeft } />
-          </button>
-          :
-          <button onClick={ (e) => previousBtn(1, e) } className="hidden md:inline text-primary bg-secondary bg-opacity-75 transition duration-300 hover:bg-white hover:text-secondary w-12 h-12">
-            <FontAwesomeIcon icon={ faAnglesLeft } />
-          </button>
-        }
-      </div>
+    <div className="flex align-center justify-center flex-wrap w-full md:w-11/12 mt-2 mx-auto p-2">
+      <button onClick={ (e) => previousBtn(index, e) } className={ `${ index < 1 ? 'text-secondary bg-white' : 'text-primary bg-secondary md:hover:bg-white md:hover:text-secondary bg-opacity-75' } transition duration-300 rounded-tl-full rounded-bl-full w-12 h-12` } disabled={ index < 1 }>
+        <FontAwesomeIcon icon={ faAngleLeft } />
+      </button>
+
+      <button onClick={ (e) => previousBtn(1, e) } className={ `hidden md:inline ${ index < 1 ? 'text-secondary bg-white' : 'text-primary bg-secondary bg-opacity-75 md:hover:bg-white md:hover:text-secondary' } transition duration-300 w-12 h-12` } disabled={ index < 1 }>
+        <FontAwesomeIcon icon={ faAnglesLeft } />
+      </button>
+
+      { emptyArr.slice(index, sibling).map((value, idx) => {
+          return <button key={ `left-empty-${idx}` } className="w-12 h-12 bg-secondary bg-opacity-75 cursor-default"></button>
+        })
+      }
 
       { sliceLeft.map((value, idx) => {
-          return <button onClick={ (e) => indexBtn(value, e) } key={ `left-${idx}` } className={ `w-12 h-12 font-press text-white bg-secondary bg-opacity-75 transition duration-300 hover:bg-white hover:text-secondary rounded-full` }>
+          return <button onClick={ (e) => indexBtn(value, e) } key={ `left-${idx}` } className={ `w-12 h-12 font-press text-white bg-secondary bg-opacity-75 transition duration-300 md:hover:bg-white md:hover:text-secondary` }>
                   { value + 1 }
                 </button>
         })
       }
 
       { sliceCenter.map((value, idx) => {
-          return <button onClick={ (e) => indexBtn(value, e) } key={ `center-${idx}` } className={ `w-12 h-12 font-press ${ value === index ? 'text-secondary bg-white' : 'text-white bg-secondary' } bg-opacity-75 transition duration-300 hover:bg-white hover:text-secondary rounded-full` }>
+          return <button onClick={ (e) => indexBtn(value, e) } key={ `center-${idx}` } className={ `w-12 h-12 font-press ${ value === index ? 'text-secondary bg-white' : 'text-white bg-secondary' } bg-opacity-75 transition duration-300 md:hover:bg-white md:hover:text-secondary` }>
                   { value + 1 }
                 </button>
         })
       }
 
       { sliceRight.map((value, idx) => {
-          return <button onClick={ (e) => indexBtn(value, e) } key={ `right-${idx}` } className={ `w-12 h-12 font-press text-white bg-secondary bg-opacity-75 transition duration-300 hover:bg-white hover:text-secondary rounded-full` }>
+          return <button onClick={ (e) => indexBtn(value, e) } key={ `right-${idx}` } className={ `w-12 h-12 font-press text-white bg-secondary bg-opacity-75 transition duration-300 md:hover:bg-white md:hover:text-secondary` }>
                   { value + 1 }
                 </button>
         })
       }
 
-      <div>
-        { pages - 1 < index ?
-          <button className="hidden md:inline text-secondary bg-white transition duration-300 w-12 h-12" disabled>
-            <FontAwesomeIcon icon={ faAnglesRight } />
-          </button>
-          :
-          <button onClick={ (e) => nextBtn(pages - 1, e) } className="hidden md:inline text-primary bg-secondary bg-opacity-75 transition duration-300 hover:bg-white hover:text-secondary w-12 h-12">
-            <FontAwesomeIcon icon={ faAnglesRight } />
-          </button>
-        }
-        { pages - 1 < index ?
-          <button className="text-secondary bg-white transition duration-300 rounded-tr-full rounded-br-full w-12 h-12" disabled>
-            <FontAwesomeIcon icon={ faAngleRight } />
-          </button>
-          :
-          <button onClick={ (e) => nextBtn(index, e) } className="text-primary bg-secondary bg-opacity-75 transition duration-300 hover:bg-white hover:text-secondary rounded-tr-full rounded-br-full w-12 h-12">
-            <FontAwesomeIcon icon={ faAngleRight } />
-          </button>
-        }
-      </div>
+      { emptyArr.slice(pages - index, sibling).map((value, idx) => {
+          return <button key={ `right-empty-${idx}` } className="w-12 h-12 bg-secondary bg-opacity-75 cursor-default"></button>
+        })
+      }
+
+      <button onClick={ (e) => nextBtn(pages - 1, e) } className={ `hidden md:inline ${ pages - 1 < index ? 'text-secondary bg-white' : 'text-primary bg-secondary bg-opacity-75 md:hover:bg-white md:hover:text-secondary' } transition duration-300  w-12 h-12` } disabled={ pages - 1 < index }>
+        <FontAwesomeIcon icon={ faAnglesRight } />
+      </button>
+
+      <button onClick={ (e) => nextBtn(index, e) } className={ ` ${ pages - 1 < index ? 'text-secondary bg-white' : 'text-primary bg-secondary bg-opacity-75 md:hover:bg-white md:hover:text-secondary' } transition duration-300 rounded-tr-full rounded-br-full w-12 h-12` } disabled={ pages - 1 < index }>
+        <FontAwesomeIcon icon={ faAngleRight } />
+      </button>
     </div>
   );
 }

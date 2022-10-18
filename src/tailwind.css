@@ -670,6 +670,10 @@ video {
   height: 1.5rem;
 }
 
+.h-10{
+  height: 2.5rem;
+}
+
 .w-screen{
   width: 100vw;
 }
@@ -696,6 +700,18 @@ video {
 
 .w-6{
   width: 1.5rem;
+}
+
+.w-10{
+  width: 2.5rem;
+}
+
+.cursor-none{
+  cursor: none;
+}
+
+.cursor-default{
+  cursor: default;
 }
 
 .flex-col{
@@ -795,6 +811,10 @@ video {
   padding: 0.5rem;
 }
 
+.text-right{
+  text-align: right;
+}
+
 .font-orbitron{
   font-family: Orbitron;
 }
@@ -840,6 +860,10 @@ video {
 .text-primary{
   --tw-text-opacity: 1;
   color: rgb(237 85 136 / var(--tw-text-opacity));
+}
+
+.underline{
+  text-decoration-line: underline;
 }
 
 .drop-shadow-text{
@@ -903,12 +927,20 @@ video {
     display: inline;
   }
 
+  .md\:flex{
+    display: flex;
+  }
+
   .md\:h-\[300px\]{
     height: 300px;
   }
 
   .md\:h-56{
     height: 14rem;
+  }
+
+  .md\:h-16{
+    height: 4rem;
   }
 
   .md\:w-11\/12{
@@ -929,6 +961,14 @@ video {
 
   .md\:flex-row{
     flex-direction: row;
+  }
+
+  .md\:items-center{
+    align-items: center;
+  }
+
+  .md\:justify-around{
+    justify-content: space-around;
   }
 
   .md\:rounded-tl-full{
@@ -960,9 +1000,21 @@ video {
     padding: 0.25rem;
   }
 
+  .md\:p-0{
+    padding: 0px;
+  }
+
   .md\:px-8{
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .md\:text-left{
+    text-align: left;
+  }
+
+  .md\:text-center{
+    text-align: center;
   }
 
   .md\:text-2xl{
@@ -980,6 +1032,10 @@ video {
     line-height: 1.75rem;
   }
 
+  .md\:no-underline{
+    text-decoration-line: none;
+  }
+
   .md\:hover\:z-10:hover{
     z-index: 10;
   }
@@ -989,5 +1045,20 @@ video {
     --tw-scale-y: 1.05;
     -webkit-transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
             transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .md\:hover\:bg-white:hover{
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  }
+
+  .md\:hover\:text-secondary:hover{
+    --tw-text-opacity: 1;
+    color: rgb(87 23 45 / var(--tw-text-opacity));
+  }
+
+  .md\:hover\:text-primary:hover{
+    --tw-text-opacity: 1;
+    color: rgb(237 85 136 / var(--tw-text-opacity));
   }
 }
