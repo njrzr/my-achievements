@@ -16,7 +16,7 @@ function App() {
       }
       
       <User />
-      <Achievements  achievementF={ setAchievementFlag } />
+      <Achievements achievementF={ setAchievementFlag } />
       <Footer />
     </div>
   );

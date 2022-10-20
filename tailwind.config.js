@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const colors = require('tailwindcss/colors');
+
 module.exports = {
   mode: 'jit',
   content: [
@@ -7,17 +10,17 @@ module.exports = {
   ],
   theme: {
     extend: {
-      'backgroundColor': {
-        'primary': '#ED5588',
+      colors: {
+        'primary': {
+          50: '#ED558866',
+          DEFAULT: '#ED5588'
+        },
         'secondary': '#57172D',
         'terciary': '#9E2950',
-        'platinum': '#E5E4E2'
-      },
-      'textColor' : {
-        'primary': '#ED5588',
-        'secondary': '#57172D',
-        'terciary': '#9E2950',
-        'platinum': '#E5E4E2'
+        'platinum': {
+          50: '#E5E4E266',
+          DEFAULT: '#E5E4E2'
+        }
       },
       'fontFamily': {
         'orbitron': 'Orbitron',

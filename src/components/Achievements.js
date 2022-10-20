@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Navigation from "../components/Navigation";
+import { CaravaggioProvider, Image } from 'caravaggio-react';
 
 function Achievements(props) {
   const { achievementF } = props
@@ -33,6 +34,7 @@ function Achievements(props) {
         if (response.titles[count].achievement.sourceVersion !== 0) games.push(response.titles[count]);
         count++;
       }
+
       setTitlesArr(games);
       sliced = games.slice(0, 12);
       setAchievements(sliced);
@@ -69,20 +71,22 @@ function Achievements(props) {
 
   return (
     <div className="relative flex flex-wrap w-full md:w-11/12 my-1 md:my-2 mx-auto p-4 md:p-1">
-      { achievements.map(value => {
-          return <div key={ value["titleId"] } className="relative w-full md:w-1/4 overflow-hidden my-1 md:my-auto md:p-1 transition duration-200 z-0 md:hover:scale-105 md:hover:z-10">
-                  <img src={ value.displayImage } className="object-contain bg-terciary bg-opacity-50 md:h-[300px] w-full mx-auto" alt="Game pic">
-                  </img>
-                  <div className={`flex flex-col justify-between p-2 h-40 bg-opacity-50 ${ value.achievement.totalGamerscore === value.achievement.currentGamerscore && value.achievement["sourceVersion"] !== 0 ? 'bg-platinum' : 'bg-terciary' }`}>
-                    <p className="font-orbitron font-bold text-2xl md:text-2xl text-white drop-shadow-text">{ value.name }</p>
-                    <div>
-                      <p className="font-press text-sm text-white drop-shadow-text my-1">Achievements: { value.achievement.currentAchievements }</p>
-                      <p className="font-press text-sm text-white drop-shadow-text">Score: { value.achievement.currentGamerscore } / { value.achievement.totalGamerscore }</p>
+      <CaravaggioProvider url="https://njrzr-caravaggio.vercel.app">
+        { achievements.map(value => {
+            return <div key={ value["titleId"] } className="group relative w-full md:w-1/4 overflow-hidden my-1 md:my-auto md:p-1 transition duration-200 z-0 md:hover:scale-105 md:hover:z-10">
+                    <Image className={ `object-contain bg-opacity-50 transition duration-300 group-hover:bg-opacity-100 md:h-[300px] w-full mx-auto rounded-tl-lg rounded-tr-lg ${ value.achievement.totalGamerscore === value.achievement.currentGamerscore ? 'bg-gradient-to-tr from-primary to-platinum' : 'bg-terciary' }` } src={ value.displayImage } alt={ `Game art-${value.titleId}`} opt={{ o: "webp", q: 50, rs: { s: "300", m: "fit" } }} />
+                    
+                    <div className={ `flex flex-col justify-between p-2 h-40 bg-opacity-50 transition duration-300 group-hover:bg-opacity-100 rounded-bl-lg rounded-br-lg ${ value.achievement.totalGamerscore === value.achievement.currentGamerscore ? 'bg-gradient-to-br from-primary to-platinum' : 'bg-terciary' } `}>
+                      <p className="font-orbitron font-bold text-2xl md:text-2xl text-white drop-shadow-text">{ value.name }</p>
+                      <div>
+                        <p className="font-press text-sm text-white drop-shadow-text my-1">Achievements: { value.achievement.currentAchievements }</p>
+                        <p className="font-press text-sm text-white drop-shadow-text">Score: { value.achievement.currentGamerscore } / { value.achievement.totalGamerscore }</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-        })
-      }
+          })
+        }
+      </ CaravaggioProvider>
       <Navigation pageGames={ pageGames } titles={ titlesArr } />
     </div>
   );
