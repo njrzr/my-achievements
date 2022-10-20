@@ -28,18 +28,17 @@ function User() {
   }
 
   return (
-    <div className="relative mx-auto flex flex-col md:flex-row justify-center items-center w-full md:w-11/12 my-1 md:my-4 p-4">
+    <div className="relative mx-auto flex flex-col md:flex-row justify-center items-center w-full md:w-11/12 my-1 md:my-4 px-4 md:p-4">
       <div className="relative w-full flex md:block justify-center md:w-56 md:h-56 md:bg-primary md:bg-opacity-50 md:rounded-tl-full md:rounded-bl-full">
         <img src={ picture } className="user-pic relative w-56 h-56 rounded-full" alt="Profile"></img>
       </div>
 
-      <div className="relative overflow-hidden flex flex-col justify-center w-full md:w-8/12 md:h-56 p-4 md:px-8 my-2 md:my-auto bg-primary bg-opacity-50 md:rounded-tr-full md:rounded-br-full">
+      <div className="relative overflow-hidden flex flex-col justify-center w-full md:w-8/12 md:h-56 p-4 md:px-8 mt-2 md:my-auto bg-primary bg-opacity-50 rounded-lg md:rounded-tr-full md:rounded-br-full">
         <p className="username font-orbitron text-white drop-shadow-text text-2xl md:text-3xl font-bold">{ username }</p>
         <p className="flex gap-2 gamerscore font-orbitron text-white drop-shadow-text md:text-xl my-2">
           <span className="flex items-center justify-center text-base bg-white text-primary font-bold rounded-full w-6 h-6">G</span>{ gamerscore }
         </p>
         <p className="bio font-orbitron text-white drop-shadow-text md:text-xl">Bio: { bio }</p>
-        <p></p>
       </div>
     </div>
   );
