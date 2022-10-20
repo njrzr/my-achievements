@@ -60,7 +60,7 @@ function Achievements(props) {
       if (flag) count = 0;
     }
 
-    body.style = `background: url(${ background }) top no-repeat fixed; background-size: cover;`
+    body.style = `background: url(https://njrzr-caravaggio.vercel.app/o:webp/?image=${ background }) top no-repeat fixed; background-size: cover;`
   }
 
   const pageGames = (response, index = 0) => {
