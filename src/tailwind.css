@@ -14,34 +14,76 @@ code {
     monospace;
 }
 
-.loader {
-  -webkit-animation: spin infinite steps(8, end) 1s;
-          animation: spin infinite steps(8, end) 1s;
-  border-radius: 100%;
-}
-
-@-webkit-keyframes spin {
+@-webkit-keyframes progression {
   0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    background: hsl(340, 81%, 83%);
+  }
+
+  50% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+    background: hsl(340, 81%, 63%);
   }
 
   100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    background: hsl(340, 81%, 83%);
   }
 }
 
-@keyframes spin {
+@keyframes progression {
   0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    background: hsl(340, 81%, 83%);
+  }
+
+  50% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+    background: hsl(340, 81%, 63%);
   }
 
   100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    background: hsl(340, 81%, 83%);
   }
+}
+
+.bars {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background: hsl(340, 81%, 83%);
+}
+
+.bars:nth-child(1) {
+  -webkit-animation: progression 1000ms infinite 100ms;
+          animation: progression 1000ms infinite 100ms;
+}
+
+.bars:nth-child(2) {
+  -webkit-animation: progression 1000ms infinite 200ms;
+          animation: progression 1000ms infinite 200ms;
+}
+
+.bars:nth-child(3) {
+  -webkit-animation: progression 1000ms infinite 300ms;
+          animation: progression 1000ms infinite 300ms;
+}
+
+.bars:nth-child(4) {
+  -webkit-animation: progression 1000ms infinite 400ms;
+          animation: progression 1000ms infinite 400ms;
+}
+
+.bars:nth-child(5) {
+  -webkit-animation: progression 1000ms infinite 500ms;
+          animation: progression 1000ms infinite 500ms;
 }
 
 /*
@@ -646,16 +688,12 @@ video {
   height: 100vh;
 }
 
-.h-80{
-  height: 20rem;
-}
-
 .h-40{
   height: 10rem;
 }
 
-.h-12{
-  height: 3rem;
+.h-10{
+  height: 2.5rem;
 }
 
 .h-56{
@@ -666,16 +704,8 @@ video {
   height: 1.5rem;
 }
 
-.h-10{
-  height: 2.5rem;
-}
-
 .w-screen{
   width: 100vw;
-}
-
-.w-80{
-  width: 20rem;
 }
 
 .w-full{
@@ -686,8 +716,8 @@ video {
   width: 91.666667%;
 }
 
-.w-12{
-  width: 3rem;
+.w-10{
+  width: 2.5rem;
 }
 
 .w-56{
@@ -696,10 +726,6 @@ video {
 
 .w-6{
   width: 1.5rem;
-}
-
-.w-10{
-  width: 2.5rem;
 }
 
 .cursor-default{
@@ -724,6 +750,10 @@ video {
 
 .justify-between{
   justify-content: space-between;
+}
+
+.gap-4{
+  gap: 1rem;
 }
 
 .gap-2{
@@ -954,12 +984,12 @@ video {
     height: 4rem;
   }
 
-  .md\:h-56{
-    height: 14rem;
-  }
-
   .md\:h-12{
     height: 3rem;
+  }
+
+  .md\:h-56{
+    height: 14rem;
   }
 
   .md\:w-11\/12{
@@ -970,16 +1000,16 @@ video {
     width: 25%;
   }
 
+  .md\:w-12{
+    width: 3rem;
+  }
+
   .md\:w-56{
     width: 14rem;
   }
 
   .md\:w-8\/12{
     width: 66.666667%;
-  }
-
-  .md\:w-12{
-    width: 3rem;
   }
 
   .md\:flex-row{
