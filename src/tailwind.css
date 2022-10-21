@@ -649,6 +649,10 @@ video {
   top: 0px;
 }
 
+.bottom-0{
+  bottom: 0px;
+}
+
 .z-10{
   z-index: 10;
 }
@@ -726,6 +730,10 @@ video {
 
 .w-6{
   width: 1.5rem;
+}
+
+.w-1\/4{
+  width: 25%;
 }
 
 .cursor-default{
@@ -867,6 +875,15 @@ video {
   padding-right: 1rem;
 }
 
+.py-4{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.text-center{
+  text-align: center;
+}
+
 .text-right{
   text-align: right;
 }
@@ -942,6 +959,47 @@ video {
 
 .duration-300{
   transition-duration: 300ms;
+}
+
+.hover\:w-full:hover{
+  width: 100%;
+}
+
+.hover\:border-red-600:hover{
+  --tw-border-opacity: 1;
+  border-color: rgb(220 38 38 / var(--tw-border-opacity));
+}
+
+.group:hover .group-hover\:absolute{
+  position: absolute;
+}
+
+.group:hover .group-hover\:top-0{
+  top: 0px;
+}
+
+.group:hover .group-hover\:left-0{
+  left: 0px;
+}
+
+.group:hover .group-hover\:z-20{
+  z-index: 20;
+}
+
+.group:hover .group-hover\:h-full{
+  height: 100%;
+}
+
+.group:hover .group-hover\:h-screen{
+  height: 100vh;
+}
+
+.group:hover .group-hover\:w-full{
+  width: 100%;
+}
+
+.group:hover .group-hover\:w-screen{
+  width: 100vw;
 }
 
 .group:hover .group-hover\:bg-opacity-100{
@@ -1113,5 +1171,31 @@ video {
   .md\:hover\:text-secondary:hover{
     --tw-text-opacity: 1;
     color: rgb(87 23 45 / var(--tw-text-opacity));
+  }
+
+  .group:hover .md\:group-hover\:h-full{
+    height: 100%;
+  }
+
+  .group:hover .md\:group-hover\:h-screen{
+    height: 100vh;
+  }
+
+  .group:hover .md\:group-hover\:w-full{
+    width: 100%;
+  }
+
+  .group:hover .md\:group-hover\:w-screen{
+    width: 100vw;
+  }
+
+  .group:hover .md\:group-hover\:rotate-180{
+    --tw-rotate: 180deg;
+    -webkit-transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+            transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .group:hover .md\:group-hover\:bg-opacity-100{
+    --tw-bg-opacity: 1;
   }
 }

@@ -74,9 +74,9 @@ function Achievements(props) {
       <CaravaggioProvider url="https://njrzr-caravaggio.vercel.app">
         { achievements.map(value => {
             return <div key={ value["titleId"] } className="group relative w-full md:w-1/4 overflow-hidden my-1 md:my-auto md:p-1 transition duration-200 z-0 md:hover:scale-105 md:hover:z-10">
-                    <Image className={ `object-contain bg-opacity-50 transition duration-300 group-hover:bg-opacity-100 md:h-[300px] w-full mx-auto rounded-tl-lg rounded-tr-lg ${ value.achievement.totalGamerscore === value.achievement.currentGamerscore ? 'bg-gradient-to-tr from-primary to-platinum' : 'bg-terciary' }` } src={ value.displayImage } alt={ `Game art-${value.titleId}`} opt={{ o: "webp", q: 50, rs: { s: "300", m: "fit" } }} />
+                    <Image className={ `object-contain bg-opacity-50 transition duration-300 md:group-hover:bg-opacity-100 md:h-[300px] w-full mx-auto rounded-tl-lg rounded-tr-lg ${ value.achievement.totalGamerscore === value.achievement.currentGamerscore ? 'bg-gradient-to-tr from-primary to-platinum' : 'bg-terciary' }` } src={ value.displayImage } alt={ `Game art-${value.titleId}`} opt={{ o: "webp", q: 50, rs: { s: "300", m: "fit" } }} />
                     
-                    <div className={ `flex flex-col justify-between p-2 h-40 bg-opacity-50 transition duration-300 group-hover:bg-opacity-100 rounded-bl-lg rounded-br-lg ${ value.achievement.totalGamerscore === value.achievement.currentGamerscore ? 'bg-gradient-to-br from-primary to-platinum' : 'bg-terciary' } `}>
+                    <div className={ `flex flex-col justify-between p-2 h-40 bg-opacity-50 transition duration-300 md:group-hover:bg-opacity-100 rounded-bl-lg rounded-br-lg ${ value.achievement.totalGamerscore === value.achievement.currentGamerscore ? 'bg-gradient-to-br from-primary to-platinum' : 'bg-terciary' } `}>
                       <p className="font-orbitron font-bold text-2xl md:text-2xl text-white drop-shadow-text">{ value.name }</p>
                       <div>
                         <p className="font-press text-sm text-white drop-shadow-text my-1">Achievements: { value.achievement.currentAchievements }</p>

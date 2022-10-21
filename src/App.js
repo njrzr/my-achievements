@@ -10,11 +10,11 @@ function App() {
     <div className="App">
       { achievementFlag !== true &&
         <div className="fixed flex justify-center items-center top-0 z-10 w-screen h-screen bg-secondary gap-4">
-          <div class="bars"></div>
-          <div class="bars"></div>
-          <div class="bars"></div>
-          <div class="bars"></div>
-          <div class="bars"></div>
+          <div className="bars"></div>
+          <div className="bars"></div>
+          <div className="bars"></div>
+          <div className="bars"></div>
+          <div className="bars"></div>
         </div>
       }
       
