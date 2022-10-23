@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 function User() {
   const [picture, setPicture] = useState("");
@@ -9,15 +9,16 @@ function User() {
 
   useEffect(() => {
     axios({
-      url: 'https://njrzr-express-server.netlify.app/.netlify/functions/api/xbl',
-      method: 'GET',
+      url: "https://njrzr-express-server.netlify.app/.netlify/functions/api/xbl",
+      method: "GET",
       headers: {
         "X-Authorization": "kkkw8co804wgcg0cksgcks40cc44cc0gck0",
-        "Accept": "application/json",
-        "Target-URL": "https://xbl.io/api/v2/account?"
-      }
-    }).then(response => setResponse(response.data))
-      .catch(err => console.log(err));
+        Accept: "application/json",
+        "Target-URL": "https://xbl.io/api/v2/account?",
+      },
+    })
+      .then((response) => setResponse(response.data))
+      .catch((err) => console.log(err));
   }, []);
 
   const setResponse = (response) => {
@@ -25,20 +26,31 @@ function User() {
     setGamerscore(response["profileUsers"][0].settings[1].value);
     setUsername(response["profileUsers"][0].settings[2].value);
     setBio(response["profileUsers"][0].settings[7].value);
-  }
+  };
 
   return (
     <div className="relative mx-auto flex flex-col md:flex-row justify-center items-center w-full md:w-11/12 my-1 md:my-4 px-4 md:p-4">
       <div className="relative w-full flex md:block justify-center md:w-56 md:h-56 md:bg-primary md:bg-opacity-50 md:rounded-tl-full md:rounded-bl-full">
-        <img src={ picture } className="user-pic relative w-56 h-56 rounded-full" alt="Profile"></img>
+        <img
+          src={picture}
+          className="user-pic relative w-56 h-56 rounded-full"
+          alt="Profile"
+        ></img>
       </div>
 
       <div className="relative overflow-hidden flex flex-col justify-center w-full md:w-8/12 md:h-56 p-4 md:px-8 mt-2 md:my-auto bg-primary bg-opacity-50 rounded-lg md:rounded-tr-full md:rounded-br-full">
-        <p className="username font-orbitron text-white drop-shadow-text text-2xl md:text-3xl font-bold">{ username }</p>
-        <p className="flex gap-2 gamerscore font-orbitron text-white drop-shadow-text md:text-xl my-2">
-          <span className="flex items-center justify-center text-base bg-white text-primary font-bold rounded-full w-6 h-6">G</span>{ gamerscore }
+        <p className="username font-orbitron text-white drop-shadow-text text-2xl md:text-3xl font-bold">
+          {username}
         </p>
-        <p className="bio font-orbitron text-white drop-shadow-text md:text-xl">Bio: { bio }</p>
+        <p className="flex gap-2 gamerscore font-orbitron text-white drop-shadow-text md:text-xl my-2">
+          <span className="flex items-center justify-center text-base bg-white text-primary font-bold rounded-full w-6 h-6">
+            G
+          </span>
+          {gamerscore}
+        </p>
+        <p className="bio font-orbitron text-white drop-shadow-text md:text-xl">
+          Bio: {bio}
+        </p>
       </div>
     </div>
   );
