@@ -81,10 +81,10 @@ function Achievements(props) {
               className="group flex md:block relative w-full md:w-1/4 overflow-hidden my-1 md:my-auto md:p-1 transition duration-200 z-0 md:hover:scale-105 md:hover:z-10"
             >
               <Image
-                className={`object-contain bg-opacity-50 transition duration-300 md:group-hover:bg-opacity-100 h-[30vh] md:h-[300px] w-[30vw] md:w-full md:mx-auto rounded-tl-lg rounded-bl-lg md:rounded-tr-lg md:rounded-bl-none ${value.achievement.totalGamerscore ===
-                    value.achievement.currentGamerscore
-                    ? "bg-gradient-to-bl md:bg-gradient-to-tr from-primary to-platinum"
-                    : "bg-terciary"
+                className={`object-contain bg-opacity-50 transition duration-300 md:group-hover:bg-opacity-100 h-36 md:h-[300px] w-[30vw] md:w-full md:mx-auto rounded-tl-lg rounded-bl-lg md:rounded-tr-lg md:rounded-bl-none ${value.achievement.totalGamerscore ===
+                  value.achievement.currentGamerscore
+                  ? "bg-gradient-to-bl md:bg-gradient-to-tr from-primary to-platinum"
+                  : "bg-terciary"
                   }`}
                 src={value.displayImage}
                 alt={`Game art-${value.titleId}`}
@@ -92,20 +92,20 @@ function Achievements(props) {
               />
 
               <div
-                className={`flex flex-col justify-between p-2 w-[70vw] md:w-full h-[30vh] md:h-40 bg-opacity-50 transition duration-300 md:group-hover:bg-opacity-100 rounded-tr-lg md:rounded-tr-none md:rounded-bl-lg rounded-br-lg ${value.achievement.totalGamerscore ===
-                    value.achievement.currentGamerscore
-                    ? "bg-gradient-to-br from-primary to-platinum"
-                    : "bg-terciary"
+                className={`flex flex-col justify-between p-2 w-[70vw] md:w-full h-36 md:h-40 bg-opacity-50 transition duration-300 md:group-hover:bg-opacity-100 rounded-tr-lg md:rounded-tr-none md:rounded-bl-lg rounded-br-lg ${value.achievement.totalGamerscore ===
+                  value.achievement.currentGamerscore
+                  ? "bg-gradient-to-br from-primary to-platinum"
+                  : "bg-terciary"
                   } `}
               >
-                <p className="font-orbitron font-bold text-2xl md:text-2xl text-white drop-shadow-text">
+                <p className="font-orbitron font-bold text-xl md:text-2xl text-white drop-shadow-text">
                   {value.name}
                 </p>
                 <div>
-                  <p className="font-press text-sm text-white drop-shadow-text my-1">
+                  <p className="font-press text-xs md:text-sm text-white drop-shadow-text my-1">
                     Achievements: {value.achievement.currentAchievements}
                   </p>
-                  <p className="font-press text-sm text-white drop-shadow-text">
+                  <p className="font-press text-xs md:text-sm text-white drop-shadow-text">
                     Score: {value.achievement.currentGamerscore} /{" "}
                     {value.achievement.totalGamerscore}
                   </p>
