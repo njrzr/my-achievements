@@ -23,8 +23,8 @@ module.exports = {
         }
       },
       'fontFamily': {
-        'orbitron': 'Orbitron',
-        'press': 'Press\\ Start\\ 2P'
+        'press': 'Press\\ Start\\ 2P',
+        'poppins': 'Poppins'
       },
       'dropShadow': {
         'text': '2px 2px 2px #9E2950'

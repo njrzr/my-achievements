@@ -92,20 +92,20 @@ function Achievements(props) {
               />
 
               <div
-                className={`flex flex-col justify-between p-2 w-[60vw] md:w-full h-36 md:h-40 bg-opacity-50 transition duration-300 md:group-hover:bg-opacity-100 rounded-tr-lg md:rounded-tr-none md:rounded-bl-lg rounded-br-lg ${value.achievement.totalGamerscore ===
+                className={`flex flex-col justify-between p-2 w-[60vw] md:w-full h-36 md:h-40 bg-opacity-50 transition duration-300 md:group-hover:bg-opacity-100 rounded-tr-lg md:rounded-tr-none md:rounded-bl-lg rounded-br-lg overflow-hidden ${value.achievement.totalGamerscore ===
                   value.achievement.currentGamerscore
                   ? "bg-gradient-to-br from-primary to-platinum"
                   : "bg-terciary"
                   } `}
               >
-                <p className="font-orbitron font-bold text-xl md:text-2xl text-white drop-shadow-text">
+                <p className="font-poppins font-semibold text-base md:text-xl text-white drop-shadow-text">
                   {value.name}
                 </p>
                 <div>
-                  <p className="font-press text-xs md:text-sm text-white drop-shadow-text my-1">
+                  <p className="font-poppins text-sm md:text-base font-medium text-white drop-shadow-text my-1">
                     Achievements: {value.achievement.currentAchievements}
                   </p>
-                  <p className="font-press text-xs md:text-sm text-white drop-shadow-text">
+                  <p className="font-poppins text-sm md:text-base font-medium text-white drop-shadow-text">
                     Score: {value.achievement.currentGamerscore} /{" "}
                     {value.achievement.totalGamerscore}
                   </p>

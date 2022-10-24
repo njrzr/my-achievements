@@ -39,16 +39,16 @@ function User() {
       </div>
 
       <div className="relative overflow-hidden flex flex-col justify-center w-full md:w-8/12 md:h-56 p-4 md:px-8 mt-2 md:my-auto bg-primary bg-opacity-50 rounded-lg md:rounded-tr-full md:rounded-br-full">
-        <p className="username font-orbitron text-white drop-shadow-text text-2xl md:text-3xl font-bold">
+        <p className="username font-press text-white drop-shadow-text text-2xl md:text-3xl">
           {username}
         </p>
-        <p className="flex gap-2 gamerscore font-orbitron text-white drop-shadow-text md:text-xl my-2">
-          <span className="flex items-center justify-center text-base bg-white text-primary font-bold rounded-full w-6 h-6">
+        <p className="flex gap-2 gamerscore font-press text-white drop-shadow-text md:text-xl my-2">
+          <span className="flex items-center font-poppins justify-center text-base bg-white text-primary rounded-full w-6 h-6">
             G
           </span>
           {gamerscore}
         </p>
-        <p className="bio font-orbitron text-white drop-shadow-text md:text-xl">
+        <p className="bio font-poppins text-white font-medium drop-shadow-text md:text-xl">
           Bio: {bio}
         </p>
       </div>
