@@ -13,7 +13,7 @@ function User() {
       method: "GET",
       headers: {
         "X-Authorization": "kkkw8co804wgcg0cksgcks40cc44cc0gck0",
-        Accept: "application/json",
+        "Accept": "application/json",
         "Target-URL": "https://xbl.io/api/v2/account?",
       },
     })

@@ -14,7 +14,7 @@ function Achievements(props) {
       method: "GET",
       headers: {
         "X-Authorization": "kkkw8co804wgcg0cksgcks40cc44cc0gck0",
-        Accept: "application/json",
+        "Accept": "application/json",
         "Target-URL": "https://xbl.io/api/v2/achievements?",
       },
     })
@@ -78,10 +78,10 @@ function Achievements(props) {
           return (
             <div
               key={value["titleId"]}
-              className="group flex md:block relative w-full md:w-1/4 overflow-hidden my-1 md:my-auto md:p-1 transition duration-200 z-0 md:hover:scale-105 md:hover:z-10"
+              className="group flex justify-center md:block relative w-full md:w-1/4 overflow-hidden my-1 md:my-auto md:p-1 transition duration-200 z-0 md:hover:scale-105 md:hover:z-10"
             >
               <Image
-                className={`object-contain bg-opacity-50 transition duration-300 md:group-hover:bg-opacity-100 h-36 md:h-[300px] w-[30vw] md:w-full md:mx-auto rounded-tl-lg rounded-bl-lg md:rounded-tr-lg md:rounded-bl-none ${value.achievement.totalGamerscore ===
+                className={`object-contain bg-opacity-50 transition duration-300 md:group-hover:bg-opacity-100 h-36 md:h-[300px] w-36 md:w-full md:mx-auto rounded-tl-lg rounded-bl-lg md:rounded-tr-lg md:rounded-bl-none ${value.achievement.totalGamerscore ===
                   value.achievement.currentGamerscore
                   ? "bg-gradient-to-bl md:bg-gradient-to-tr from-primary to-platinum"
                   : "bg-terciary"
@@ -92,7 +92,7 @@ function Achievements(props) {
               />
 
               <div
-                className={`flex flex-col justify-between p-2 w-[70vw] md:w-full h-36 md:h-40 bg-opacity-50 transition duration-300 md:group-hover:bg-opacity-100 rounded-tr-lg md:rounded-tr-none md:rounded-bl-lg rounded-br-lg ${value.achievement.totalGamerscore ===
+                className={`flex flex-col justify-between p-2 w-[60vw] md:w-full h-36 md:h-40 bg-opacity-50 transition duration-300 md:group-hover:bg-opacity-100 rounded-tr-lg md:rounded-tr-none md:rounded-bl-lg rounded-br-lg ${value.achievement.totalGamerscore ===
                   value.achievement.currentGamerscore
                   ? "bg-gradient-to-br from-primary to-platinum"
                   : "bg-terciary"
