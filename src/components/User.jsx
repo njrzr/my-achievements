@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-function User() {
+function User(props) {
+  const { userF } = props;
   const [picture, setPicture] = useState("");
   const [username, setUsername] = useState("");
   const [gamerscore, setGamerscore] = useState("");
@@ -9,7 +10,7 @@ function User() {
 
   useEffect(() => {
     axios({
-      url: "https://njrzr-express-server.netlify.app//.netlify/functions/api/xbl",
+      url: "https://njrzr-express-server.netlify.app/.netlify/functions/api/xbl",
       method: "GET",
       headers: {
         "X-Authorization": "kkkw8co804wgcg0cksgcks40cc44cc0gck0",
@@ -19,14 +20,15 @@ function User() {
     })
       .then((response) => setResponse(response.data))
       .catch((err) => console.log(err));
-  }, []);
 
-  const setResponse = (response) => {
-    setPicture(response["profileUsers"][0].settings[0].value);
-    setGamerscore(response["profileUsers"][0].settings[1].value);
-    setUsername(response["profileUsers"][0].settings[2].value);
-    setBio(response["profileUsers"][0].settings[7].value);
-  };
+    const setResponse = (response) => {
+      setPicture(response["profileUsers"][0].settings[0].value);
+      setGamerscore(response["profileUsers"][0].settings[1].value);
+      setUsername(response["profileUsers"][0].settings[2].value);
+      setBio(response["profileUsers"][0].settings[7].value);
+      userF(true);
+    };
+  }, [userF]);
 
   return (
     <div className="relative mx-auto flex flex-col md:flex-row justify-center items-center w-full md:w-11/12 my-1 md:my-4 px-4 md:p-4">
