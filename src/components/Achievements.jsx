@@ -1,12 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Navigation from "./Navigation";
+import AchievementsList from "./AchievementsList";
 import { CaravaggioProvider, Image } from "caravaggio-react";
 
 function Achievements(props) {
   const { achievementF } = props;
   const [achievements, setAchievements] = useState([]);
   const [titlesArr, setTitlesArr] = useState([]);
+  const [toggleList, setToggle] = useState(false);
+  const [game, setGame] = useState([]);
 
   useEffect(() => {
     axios({
@@ -32,8 +35,7 @@ function Achievements(props) {
       let count = 0;
 
       while (count < response.titles.length) {
-        if (response.titles[count].achievement.sourceVersion !== 0)
-          games.push(response.titles[count]);
+        if (response.titles[count].achievement.sourceVersion !== 0) games.push(response.titles[count]);
         count++;
       }
 
@@ -71,14 +73,21 @@ function Achievements(props) {
     setAchievements(sliced);
   };
 
+  const setView = (gameData) => {
+    setToggle(!toggleList)
+    setGame(gameData)
+  }
+
   return (
     <div className="relative flex flex-wrap w-full md:w-11/12 my-1 md:my-2 mx-auto p-4 md:p-1">
       <CaravaggioProvider url="https://njrzr-caravaggio.vercel.app">
-        {achievements.map((value) => {
+        {achievements.map((value, index) => {
           return (
             <div
               key={value["titleId"]}
-              className="group flex justify-center md:block relative w-full md:w-1/4 overflow-hidden my-1 md:my-auto md:p-1 transition duration-200 z-0 md:hover:scale-105 md:hover:z-10"
+              className="group cursor-pointer flex justify-center md:block relative w-full md:w-1/4 overflow-hidden my-1 md:my-auto md:p-1 transition duration-200 z-0 md:hover:scale-105 md:hover:z-10"
+
+              onClick={() => setView(value)}
             >
               <Image
                 className={`object-contain bg-opacity-50 transition duration-300 md:group-hover:bg-opacity-100 h-36 md:h-[300px] w-36 md:w-full md:mx-auto rounded-tl-lg rounded-bl-lg md:rounded-tr-lg md:rounded-bl-none ${value.achievement.totalGamerscore ===
@@ -116,6 +125,7 @@ function Achievements(props) {
         })}
       </CaravaggioProvider>
       <Navigation pageGames={pageGames} titles={titlesArr} />
+      <AchievementsList game={game} toggleList={toggleList} setToggle={setToggle} />
     </div>
   );
 }
