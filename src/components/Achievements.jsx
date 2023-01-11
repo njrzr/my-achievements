@@ -14,7 +14,7 @@ function Achievements(props) {
 
   useEffect(() => {
     axios({
-      url: "http://localhost:9000/.netlify/functions/api/xbl",
+      url: "https://njrzr-express-server.netlify.app/.netlify/functions/api/xbl",
       method: "GET",
       headers: {
         "X-Authorization": "kkkw8co804wgcg0cksgcks40cc44cc0gck0",
