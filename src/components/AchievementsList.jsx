@@ -43,8 +43,6 @@ function AchievementsList(props) {
     : setAchievements([]);
   }, [toggleList]);
 
-  console.log(achievements)
-
   return (
     <div className={`fixed top-0 left-0 z-20 bg-primary w-full h-screen overflow-auto ${toggleList === true ? 'block' : 'hidden'}`}>
       <p className="fixed z-10 text-xl flex justify-center items-center cursor-pointer top-2 right-2 md:right-8 w-10 h-10 bg-white rounded-full"onClick={ () => {
