@@ -14,7 +14,7 @@ function App() {
   }, [achievementFlag, userFlag]);
 
   return (
-    <div className="App select-none">
+    <div className="App select-none box-border">
       {flag !== true &&
         <div className="fixed flex justify-center items-center top-0 z-10 w-screen h-screen bg-secondary gap-4">
           <div className="circles"></div>
@@ -25,7 +25,7 @@ function App() {
         </div>
       }
 
-      <User userF={setUserFlag}/>
+      <User userF={setUserFlag} />
       <Achievements achievementF={setAchievementFlag} />
       <Footer />
     </div>

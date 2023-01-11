@@ -17,9 +17,9 @@ module.exports = {
         },
         'secondary': '#57172D',
         'terciary': '#9E2950',
-        'platinum': {
-          50: '#E5E4E266',
-          DEFAULT: '#E5E4E2'
+        'gold': {
+          50: '#FFD70066',
+          DEFAULT: '#FFD700'
         }
       },
       'fontFamily': {

@@ -10,12 +10,12 @@ function User(props) {
 
   useEffect(() => {
     axios({
-      url: "https://njrzr-express-server.netlify.app/.netlify/functions/api/xbl",
+      url: "http://localhost:9000/.netlify/functions/api/xbl",
       method: "GET",
       headers: {
         "X-Authorization": "kkkw8co804wgcg0cksgcks40cc44cc0gck0",
         "Accept": "application/json",
-        "Target-URL": "https://xbl.io/api/v2/account?",
+        "Target-URL": "https://xbl.io/api/v2/account?"
       },
     })
       .then((response) => setResponse(response.data))

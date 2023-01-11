@@ -10,15 +10,16 @@ function Achievements(props) {
   const [titlesArr, setTitlesArr] = useState([]);
   const [toggleList, setToggle] = useState(false);
   const [game, setGame] = useState([]);
+  const [userId, setUser] = useState('');
 
   useEffect(() => {
     axios({
-      url: "https://njrzr-express-server.netlify.app/.netlify/functions/api/xbl",
+      url: "http://localhost:9000/.netlify/functions/api/xbl",
       method: "GET",
       headers: {
         "X-Authorization": "kkkw8co804wgcg0cksgcks40cc44cc0gck0",
         "Accept": "application/json",
-        "Target-URL": "https://xbl.io/api/v2/achievements?",
+        "Target-URL": "https://xbl.io/api/v2/achievements?"
       },
     })
       .then((response) => setResponse(response.data))
@@ -26,6 +27,7 @@ function Achievements(props) {
 
     const setResponse = (response) => {
       setBackground(response);
+      setUser(response.xuid);
       setGames(response);
     };
 
@@ -74,6 +76,8 @@ function Achievements(props) {
   };
 
   const setView = (gameData) => {
+    const body = document.querySelector("body")
+    body.style.overflow = "hidden";
     setToggle(!toggleList)
     setGame(gameData)
   }
@@ -92,7 +96,7 @@ function Achievements(props) {
               <Image
                 className={`object-contain bg-opacity-50 transition duration-300 md:group-hover:bg-opacity-100 h-36 md:h-[300px] w-36 md:w-full md:mx-auto rounded-tl-lg rounded-bl-lg md:rounded-tr-lg md:rounded-bl-none ${value.achievement.totalGamerscore ===
                   value.achievement.currentGamerscore
-                  ? "bg-gradient-to-bl md:bg-gradient-to-tr from-primary to-platinum"
+                  ? "bg-gradient-to-bl md:bg-gradient-to-tr from-primary to-gold"
                   : "bg-terciary"
                   }`}
                 src={value.displayImage}
@@ -103,7 +107,7 @@ function Achievements(props) {
               <div
                 className={`flex flex-col justify-between p-2 w-[60vw] md:w-full h-36 md:h-40 bg-opacity-50 transition duration-300 md:group-hover:bg-opacity-100 rounded-tr-lg md:rounded-tr-none md:rounded-bl-lg rounded-br-lg overflow-hidden ${value.achievement.totalGamerscore ===
                   value.achievement.currentGamerscore
-                  ? "bg-gradient-to-br from-primary to-platinum"
+                  ? "bg-gradient-to-br from-primary to-gold"
                   : "bg-terciary"
                   } `}
               >
@@ -125,7 +129,7 @@ function Achievements(props) {
         })}
       </CaravaggioProvider>
       <Navigation pageGames={pageGames} titles={titlesArr} />
-      <AchievementsList game={game} toggleList={toggleList} setToggle={setToggle} />
+      <AchievementsList userId={userId} game={game} toggleList={toggleList} setToggle={setToggle} />
     </div>
   );
 }
