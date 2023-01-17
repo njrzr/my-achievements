@@ -8,6 +8,8 @@ function App() {
   const [achievementFlag, setAchievementFlag] = useState(false);
   const [userFlag, setUserFlag] = useState(false);
   const [flag, setFlag] = useState(false);
+  const dev = "http://localhost:9000/.netlify/functions/api/xbl";
+  const prod = "https://njrzr-express-server.netlify.app/.netlify/functions/api/xbl";
 
   useEffect(() => {
     if (achievementFlag === true && userFlag === true) setFlag(true);

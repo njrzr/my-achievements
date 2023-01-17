@@ -17,7 +17,7 @@ code {
 @keyframes progression {
   0% {
     transform: scale(1);
-    background: hsl(340, 81%, 83%);
+    background: rgb(247, 177, 200);
   }
   50% {
     transform: scale(1.2);
@@ -29,11 +29,30 @@ code {
   }
 }
 
+@keyframes loading {
+  0% {
+    background-position: -320px 0px;
+  }
+  50% {
+    background-position: 320px 0px;
+  }
+  100% {
+    background-position: -320px 0px;
+  }
+}
+
 .circles {
   width: 40px;
   height: 40px;
   border-radius: 20px;
   background: hsl(340, 81%, 83%);
+}
+
+.loader {
+  width: 100%;
+  height: 100svh;
+  border-radius: 0%;
+  animation: loading infinite 2s;
 }
 
 .circles:nth-child(1) {
