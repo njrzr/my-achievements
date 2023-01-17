@@ -105,7 +105,7 @@ function AchievementsList(props) {
         <div className="fixed top-0 z-10 w-full h-screen bg-terciary">
           <div className="relative shadow-lg rounded-bl-xl rounded-br-xl w-full h-36 loader bg-no-repeat bg-gradient-to-l from-transparent via-secondary to-transparent"></div>
 
-          <div className="grid md:grid-cols-3 grid-rows-4 p-1 md:p-2 gap-1 md:gap-2 h-screen">
+          <div className="grid md:grid-cols-3 md:grid-rows-4 p-1 md:p-2 gap-1 md:gap-2 h-screen">
             {
               [1, 2, 3, 4, 5, 6, 7, 8, 9].map((value, index) => {
                 return <div className="border rounded-2xl loader h-40 bg-no-repeat bg-gradient-to-l from-transparent via-secondary to-transparent" key={`skeleton-${index}`}>
