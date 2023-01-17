@@ -27,8 +27,8 @@ function App() {
         </div>
       }
 
-      <User userF={setUserFlag} />
-      <Achievements achievementF={setAchievementFlag} />
+      <User url={prod} userF={setUserFlag} />
+      <Achievements url={prod}  achievementF={setAchievementFlag} />
       <Footer />
     </div>
   );

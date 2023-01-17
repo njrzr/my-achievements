@@ -5,7 +5,7 @@ import AchievementsList from "./AchievementsList";
 import { CaravaggioProvider, Image } from "caravaggio-react";
 
 function Achievements(props) {
-  const { achievementF } = props;
+  const { achievementF, url } = props;
   const [achievements, setAchievements] = useState([]);
   const [titlesArr, setTitlesArr] = useState([]);
   const [toggleList, setToggle] = useState(false);
@@ -14,7 +14,7 @@ function Achievements(props) {
 
   useEffect(() => {
     axios({
-      url: "http://localhost:9000/.netlify/functions/api/xbl",
+      url: url,
       method: "GET",
       headers: {
         "X-Authorization": "kkkw8co804wgcg0cksgcks40cc44cc0gck0",
@@ -129,7 +129,7 @@ function Achievements(props) {
         })}
       </CaravaggioProvider>
       <Navigation pageGames={pageGames} titles={titlesArr} />
-      <AchievementsList userId={userId} game={game} toggleList={toggleList} setToggle={setToggle} />
+      <AchievementsList url={url} userId={userId} game={game} toggleList={toggleList} setToggle={setToggle} />
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function AchievementsList(props) {
-  const { userId, game, toggleList, setToggle } = props;
+  const { userId, game, toggleList, setToggle, url } = props;
   let [achievements, setAchievements] = useState([]);
   let gameUrl = '';
   let background = '';
@@ -30,7 +30,7 @@ function AchievementsList(props) {
   useEffect(() => {
     toggleList !== false ?
       axios({
-        url: "http://localhost:9000/.netlify/functions/api/xbl",
+        url: url,
         method: "GET",
         headers: {
           "X-Authorization": "kkkw8co804wgcg0cksgcks40cc44cc0gck0",
@@ -107,8 +107,8 @@ function AchievementsList(props) {
 
           <div className="grid md:grid-cols-3 grid-rows-4 p-1 md:p-2 gap-1 md:gap-2 h-screen">
             {
-              [1, 2, 3, 4, 5, 6, 7, 8, 9].map(value => {
-                return <div className="border rounded-2xl loader h-40 bg-no-repeat bg-gradient-to-l from-transparent via-secondary to-transparent">
+              [1, 2, 3, 4, 5, 6, 7, 8, 9].map((value, index) => {
+                return <div className="border rounded-2xl loader h-40 bg-no-repeat bg-gradient-to-l from-transparent via-secondary to-transparent" key={`skeleton-${index}`}>
                 </div>
               })
             }

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 function User(props) {
-  const { userF } = props;
+  const { userF, url } = props;
   const [picture, setPicture] = useState("");
   const [username, setUsername] = useState("");
   const [gamerscore, setGamerscore] = useState("");
@@ -10,7 +10,7 @@ function User(props) {
 
   useEffect(() => {
     axios({
-      url: "http://localhost:9000/.netlify/functions/api/xbl",
+      url: url,
       method: "GET",
       headers: {
         "X-Authorization": "kkkw8co804wgcg0cksgcks40cc44cc0gck0",
