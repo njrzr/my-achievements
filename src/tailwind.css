@@ -832,10 +832,6 @@ video {
           user-select: none;
 }
 
-.grid-rows-4{
-  grid-template-rows: repeat(4, minmax(0, 1fr));
-}
-
 .flex-row{
   flex-direction: row;
 }
@@ -1242,6 +1238,10 @@ video {
 
   .md\:grid-cols-3{
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .md\:grid-rows-4{
+    grid-template-rows: repeat(4, minmax(0, 1fr));
   }
 
   .md\:flex-row{
