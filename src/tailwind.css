@@ -1155,6 +1155,57 @@ video {
   transition-duration: 300ms;
 }
 
+.before\:absolute::before{
+  content: var(--tw-content);
+  position: absolute;
+}
+
+.before\:top-0::before{
+  content: var(--tw-content);
+  top: 0px;
+}
+
+.before\:left-0::before{
+  content: var(--tw-content);
+  left: 0px;
+}
+
+.before\:h-full::before{
+  content: var(--tw-content);
+  height: 100%;
+}
+
+.before\:w-full::before{
+  content: var(--tw-content);
+  width: 100%;
+}
+
+.before\:bg-black::before{
+  content: var(--tw-content);
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
+.before\:bg-opacity-0::before{
+  content: var(--tw-content);
+  --tw-bg-opacity: 0;
+}
+
+.before\:bg-opacity-100::before{
+  content: var(--tw-content);
+  --tw-bg-opacity: 1;
+}
+
+.before\:bg-opacity-75::before{
+  content: var(--tw-content);
+  --tw-bg-opacity: 0.75;
+}
+
+.before\:bg-opacity-25::before{
+  content: var(--tw-content);
+  --tw-bg-opacity: 0.25;
+}
+
 @media (min-width: 768px){
   .md\:right-8{
     right: 2rem;
