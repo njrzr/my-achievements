@@ -17,7 +17,7 @@ function Achievements(props) {
       url: url,
       method: "GET",
       headers: {
-        "X-Authorization": "kkkw8co804wgcg0cksgcks40cc44cc0gck0",
+        "X-Authorization": process.env.API_KEY,
         "Accept": "application/json",
         "Target-URL": "https://xbl.io/api/v2/achievements?"
       },
