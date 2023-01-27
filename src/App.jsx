@@ -3,11 +3,13 @@ import Achievements from "./components/Achievements";
 import Footer from "./components/Footer";
 import { useState } from "react";
 import { useEffect } from "react";
+import process from "node:process";
 
 function App() {
   const [achievementFlag, setAchievementFlag] = useState(false);
   const [userFlag, setUserFlag] = useState(false);
   const [flag, setFlag] = useState(false);
+  const apiKey = import.meta.env.VITE_API_KEY;
   const dev = "http://localhost:9000/.netlify/functions/api/xbl";
   const prod = "https://njrzr-express-server.netlify.app/.netlify/functions/api/xbl";
 
@@ -27,8 +29,8 @@ function App() {
         </div>
       }
 
-      <User url={prod} userF={setUserFlag} />
-      <Achievements url={prod}  achievementF={setAchievementFlag} />
+      <User apiKey={apiKey} url={prod} userF={setUserFlag} />
+      <Achievements apiKey={apiKey} url={prod}  achievementF={setAchievementFlag} />
       <Footer />
     </div>
   );

@@ -5,7 +5,7 @@ import AchievementsList from "./AchievementsList";
 import { CaravaggioProvider, Image } from "caravaggio-react";
 
 function Achievements(props) {
-  const { achievementF, url } = props;
+  const { achievementF, url, apiKey } = props;
   const [achievements, setAchievements] = useState([]);
   const [titlesArr, setTitlesArr] = useState([]);
   const [toggleList, setToggle] = useState(false);
@@ -17,7 +17,7 @@ function Achievements(props) {
       url: url,
       method: "GET",
       headers: {
-        "X-Authorization": process.env.API_KEY,
+        "X-Authorization": apiKey,
         "Accept": "application/json",
         "Target-URL": "https://xbl.io/api/v2/achievements?"
       },
@@ -129,7 +129,7 @@ function Achievements(props) {
         })}
       </CaravaggioProvider>
       <Navigation pageGames={pageGames} titles={titlesArr} />
-      <AchievementsList url={url} userId={userId} game={game} toggleList={toggleList} setToggle={setToggle} />
+      <AchievementsList apiKey={apiKey} url={url} userId={userId} game={game} toggleList={toggleList} setToggle={setToggle} />
     </div>
   );
 }

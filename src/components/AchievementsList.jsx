@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function AchievementsList(props) {
-  const { userId, game, toggleList, setToggle, url } = props;
+  const { userId, game, toggleList, setToggle, url, apiKey } = props;
   let [achievements, setAchievements] = useState([]);
   let gameUrl = '';
   let background = '';
@@ -33,7 +33,7 @@ function AchievementsList(props) {
         url: url,
         method: "GET",
         headers: {
-          "X-Authorization": process.env.API_KEY,
+          "X-Authorization": apiKey,
           "Accept": "application/json",
           "Target-URL": gameUrl
         },

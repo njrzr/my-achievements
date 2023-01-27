@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 function User(props) {
-  const { userF, url } = props;
+  const { userF, url, apiKey } = props;
   const [picture, setPicture] = useState("");
   const [username, setUsername] = useState("");
   const [gamerscore, setGamerscore] = useState("");
@@ -13,7 +13,7 @@ function User(props) {
       url: url,
       method: "GET",
       headers: {
-        "X-Authorization": process.env.API_KEY,
+        "X-Authorization": apiKey,
         "Accept": "application/json",
         "Target-URL": "https://xbl.io/api/v2/account?"
       },
