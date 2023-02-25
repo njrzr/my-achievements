@@ -55,14 +55,14 @@ function AchievementsList(props) {
       
       { toggleList !== false && achievements.length !== 0 ? 
         <div>
-          <div style={{ backgroundImage: `url(https://njrzr-caravaggio.vercel.app/o:webp/q:25?image=${background})`, backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "cover" }} className="relative bg-secondary p-4 rounded-bl-xl rounded-br-xl w-full overflow-hidden before:absolute before:bg-black before:w-full before:h-full before:top-0 before:left-0 before:bg-opacity-25">
+          <div style={{ backgroundImage: `url(https://njrzr-caravaggio.vercel.app/o:webp/q:25?image=${background})`, backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "cover" }} className="relative bg-secondary p-4 rounded-bl-xl rounded-br-xl w-full overflow-hidden before:absolute before:bg-black before:w-full before:h-full before:top-0 before:left-0 before:bg-opacity-25 h-1/4">
             <h1 className="text-white drop-shadow shadow-black text-4xl font-semibold">{ game.name }</h1>
             <p className="text-white drop-shadow shadow-black text-xl">Achievements: { game.achievement.currentAchievements + ' / ' + achievementsCount }</p>
             <p className="text-white drop-shadow shadow-black text-xl">Score: { game.achievement.currentGamerscore + ' / ' + game.achievement.totalGamerscore }</p>
             <p className="text-white drop-shadow shadow-black text-xl">Completed: { game.achievement.currentGamerscore === game.achievement.totalGamerscore ? 'Yes' : 'No' }</p>
           </div>
 
-          <div className="grid md:grid-cols-3 p-1 md:p-2 gap-1 md:gap-2 h-screen">
+          <div className="grid md:grid-cols-3 p-1 md:p-2 gap-1 md:gap-2 h-3/4">
             { achievements.length !== 0 ? 
                 achievements.achievements.map((value, index) => { 
                   return <div className={`relative border rounded-xl w-full bg-terciary ${game.devices.indexOf('Xbox360') !== -1 ? 'opacity-100' : value.progressState !== 'Achieved' ? 'opacity-40' : 'opacity-100'}`} key={`achievement-${index}`}>
