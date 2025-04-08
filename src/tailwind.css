@@ -711,14 +711,18 @@ video {
   z-index: 20;
 }
 
-.my-1{
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
+.col-span-5{
+  grid-column: span 5 / span 5;
 }
 
 .mx-auto{
   margin-left: auto;
   margin-right: auto;
+}
+
+.my-1{
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
 }
 
 .my-2{
@@ -750,6 +754,10 @@ video {
   display: none;
 }
 
+.aspect-square{
+  aspect-ratio: 1 / 1;
+}
+
 .h-screen{
   height: 100vh;
 }
@@ -758,36 +766,8 @@ video {
   height: 9rem;
 }
 
-.h-60{
-  height: 15rem;
-}
-
 .h-10{
   height: 2.5rem;
-}
-
-.h-56{
-  height: 14rem;
-}
-
-.h-6{
-  height: 1.5rem;
-}
-
-.h-8{
-  height: 2rem;
-}
-
-.h-96{
-  height: 24rem;
-}
-
-.h-16{
-  height: 4rem;
-}
-
-.h-40{
-  height: 10rem;
 }
 
 .h-1\/4{
@@ -798,12 +778,24 @@ video {
   height: 75%;
 }
 
-.w-screen{
-  width: 100vw;
+.h-16{
+  height: 4rem;
 }
 
-.w-full{
-  width: 100%;
+.h-40{
+  height: 10rem;
+}
+
+.h-56{
+  height: 14rem;
+}
+
+.h-6{
+  height: 1.5rem;
+}
+
+.w-screen{
+  width: 100vw;
 }
 
 .w-36{
@@ -814,24 +806,12 @@ video {
   width: 60vw;
 }
 
-.w-60{
-  width: 15rem;
-}
-
-.w-11\/12{
-  width: 91.666667%;
+.w-full{
+  width: 100%;
 }
 
 .w-10{
   width: 2.5rem;
-}
-
-.w-56{
-  width: 14rem;
-}
-
-.w-6{
-  width: 1.5rem;
 }
 
 .w-1\/4{
@@ -840,6 +820,18 @@ video {
 
 .w-3\/4{
   width: 75%;
+}
+
+.w-11\/12{
+  width: 91.666667%;
+}
+
+.w-56{
+  width: 14rem;
+}
+
+.w-6{
+  width: 1.5rem;
 }
 
 .cursor-pointer{
@@ -854,6 +846,10 @@ video {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+}
+
+.auto-rows-auto{
+  grid-auto-rows: auto;
 }
 
 .flex-row{
@@ -904,16 +900,16 @@ video {
   border-radius: 9999px;
 }
 
-.rounded-lg{
-  border-radius: 0.5rem;
-}
-
 .rounded-xl{
   border-radius: 0.75rem;
 }
 
 .rounded-2xl{
   border-radius: 1rem;
+}
+
+.rounded-lg{
+  border-radius: 0.5rem;
 }
 
 .rounded-tl-lg{
@@ -932,6 +928,18 @@ video {
   border-bottom-right-radius: 0.5rem;
 }
 
+.rounded-bl-xl{
+  border-bottom-left-radius: 0.75rem;
+}
+
+.rounded-br-xl{
+  border-bottom-right-radius: 0.75rem;
+}
+
+.rounded-tl-xl{
+  border-top-left-radius: 0.75rem;
+}
+
 .rounded-tl-full{
   border-top-left-radius: 9999px;
 }
@@ -948,29 +956,8 @@ video {
   border-bottom-right-radius: 9999px;
 }
 
-.rounded-bl-xl{
-  border-bottom-left-radius: 0.75rem;
-}
-
-.rounded-br-xl{
-  border-bottom-right-radius: 0.75rem;
-}
-
-.rounded-tl-xl{
-  border-top-left-radius: 0.75rem;
-}
-
-.border-4{
-  border-width: 4px;
-}
-
 .border{
   border-width: 1px;
-}
-
-.border-red-600{
-  --tw-border-opacity: 1;
-  border-color: rgb(220 38 38 / var(--tw-border-opacity));
 }
 
 .bg-secondary{
@@ -1038,13 +1025,12 @@ video {
   --tw-gradient-to: transparent;
 }
 
-.bg-no-repeat{
-  background-repeat: no-repeat;
+.bg-left{
+  background-position: left;
 }
 
-.object-contain{
-  -o-object-fit: contain;
-     object-fit: contain;
+.bg-no-repeat{
+  background-repeat: no-repeat;
 }
 
 .object-cover{
@@ -1064,11 +1050,6 @@ video {
   padding: 0.25rem;
 }
 
-.px-4{
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
 .py-1{
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -1077,6 +1058,11 @@ video {
 .px-3{
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+}
+
+.px-4{
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .text-right{
@@ -1101,11 +1087,6 @@ video {
   line-height: 1.25rem;
 }
 
-.text-2xl{
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-
 .text-xl{
   font-size: 1.25rem;
   line-height: 1.75rem;
@@ -1114,6 +1095,11 @@ video {
 .text-4xl{
   font-size: 2.25rem;
   line-height: 2.5rem;
+}
+
+.text-2xl{
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .font-semibold{
@@ -1229,14 +1215,8 @@ video {
     right: 2rem;
   }
 
-  .md\:my-2{
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .md\:my-auto{
-    margin-top: auto;
-    margin-bottom: auto;
+  .md\:col-span-3{
+    grid-column: span 3 / span 3;
   }
 
   .md\:mx-auto{
@@ -1247,6 +1227,11 @@ video {
   .md\:my-4{
     margin-top: 1rem;
     margin-bottom: 1rem;
+  }
+
+  .md\:my-auto{
+    margin-top: auto;
+    margin-bottom: auto;
   }
 
   .md\:block{
@@ -1281,16 +1266,12 @@ video {
     height: 14rem;
   }
 
+  .md\:w-\[300px\]{
+    width: 300px;
+  }
+
   .md\:w-11\/12{
     width: 91.666667%;
-  }
-
-  .md\:w-1\/4{
-    width: 25%;
-  }
-
-  .md\:w-full{
-    width: 100%;
   }
 
   .md\:w-12{
@@ -1374,8 +1355,8 @@ video {
     background-image: linear-gradient(to top right, var(--tw-gradient-stops));
   }
 
-  .md\:p-1{
-    padding: 0.25rem;
+  .md\:p-2{
+    padding: 0.5rem;
   }
 
   .md\:p-0{
@@ -1384,10 +1365,6 @@ video {
 
   .md\:p-4{
     padding: 1rem;
-  }
-
-  .md\:p-2{
-    padding: 0.5rem;
   }
 
   .md\:px-8{
@@ -1409,14 +1386,14 @@ video {
     line-height: 1.5rem;
   }
 
-  .md\:text-3xl{
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-  }
-
   .md\:text-2xl{
     font-size: 1.5rem;
     line-height: 2rem;
+  }
+
+  .md\:text-3xl{
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 
   .md\:no-underline{
@@ -1450,5 +1427,15 @@ video {
 
   .group:hover .md\:group-hover\:bg-opacity-100{
     --tw-bg-opacity: 1;
+  }
+}
+
+@media (min-width: 1024px){
+  .lg\:col-span-5{
+    grid-column: span 5 / span 5;
+  }
+
+  .lg\:grid-cols-5{
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }

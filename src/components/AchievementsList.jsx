@@ -14,7 +14,7 @@ function AchievementsList(props) {
   if (game.length !== 0) {
     gameUrl = game.devices.indexOf('Xbox360') !== -1 ? 
       `https://xbl.io/api/v2/achievements/player/${userId}/title/${game.titleId}`
-      : `https://xbl.io/api/v2/achievements/title/${game.titleId}`;
+      : `https://xbl.io/api/v2/achievements/x360/${userId}/title/${game.titleId}`;
 
     while (count < game.images.length) {
       if (game.images[count].type === "SuperHeroArt" || game.images[count].type === "WideBackgroundImage") {
@@ -38,7 +38,10 @@ function AchievementsList(props) {
           "Target-URL": gameUrl
         },
       })
-        .then((response) => setAchievements(response.data))
+        .then((response) => {
+          console.log(response.data)
+          setAchievements(response.data)
+        })
         .catch((error) => console.log("error", error))
     : setAchievements([]);
   }, [toggleList]);
