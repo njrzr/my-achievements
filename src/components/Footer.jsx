@@ -1,4 +1,6 @@
 function Footer() {
+  const thisYear = new Date().getFullYear()
+
   return (
     <div className="relative w-11/12 p-2 md:p-0 md:h-16 mx-auto bg-secondary bg-opacity-50 md:flex md:items-center md:justify-around rounded-tl-lg rounded-tr-lg">
       <p className="text-sm md:text-xl text-white drop-shadow-text font-poppins font-medium">
@@ -36,7 +38,7 @@ function Footer() {
         |{" "}
       </p>
       <p className="text-right md:text-left md:text-xl text-white drop-shadow-text font-poppins font-medium">
-        &copy;2022
+        &copy;2022 - { thisYear }
       </p>
     </div>
   );

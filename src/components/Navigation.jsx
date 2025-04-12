@@ -8,10 +8,10 @@ import {
 import { useState } from "react";
 
 function Navigation(props) {
-  const { pageGames, titles } = props;
+  const { pageGames, titles, sliceItems } = props;
   const [index, setIndex] = useState(0);
 
-  let pages = Math.floor(titles.length / 12);
+  let pages = Math.floor(titles.length / sliceItems);
   let pagesArr = [];
   let emptyArr = [];
   let sibling = 2;
@@ -40,21 +40,21 @@ function Navigation(props) {
 
   const previousBtn = (idx, e) => {
     setIndex(idx - 1);
-    pageGames(titles, (idx - 1) * 12);
+    pageGames(titles, (idx - 1) * sliceItems);
   };
 
   const indexBtn = (idx) => {
     setIndex(idx);
-    pageGames(titles, idx * 12);
+    pageGames(titles, idx * sliceItems);
   };
 
   const nextBtn = (idx) => {
     setIndex(idx + 1);
-    pageGames(titles, (idx + 1) * 12);
+    pageGames(titles, (idx + 1) * sliceItems);
   };
 
   return (
-    <div className="flex align-center justify-center flex-wrap w-full md:w-11/12 mt-2 mx-auto p-2">
+    <div className="flex align-center justify-center flex-wrap mt-2 mx-auto p-2 md:col-span-3 xl:col-span-5">
       <button
         onClick={(e) => previousBtn(index, e)}
         className={`${index < 1

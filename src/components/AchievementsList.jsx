@@ -13,7 +13,7 @@ function AchievementsList(props) {
 
   if (game.length !== 0) {
     gameUrl = game.devices.indexOf('Xbox360') !== -1 ? 
-      `https://xbl.io/api/v2/achievements/player/${userId}/title/${game.titleId}`
+      `https://xbl.io/api/v2/achievements/player/${userId}/${game.titleId}`
       : `https://xbl.io/api/v2/achievements/x360/${userId}/title/${game.titleId}`;
 
     while (count < game.images.length) {
@@ -38,17 +38,14 @@ function AchievementsList(props) {
           "Target-URL": gameUrl
         },
       })
-        .then((response) => {
-          console.log(response.data)
-          setAchievements(response.data)
-        })
+        .then((response) => setAchievements(response.data))
         .catch((error) => console.log("error", error))
     : setAchievements([]);
   }, [toggleList]);
 
   return (
     <div className={`fixed top-0 left-0 z-20 bg-primary w-full h-screen overflow-auto ${toggleList === true ? 'block' : 'hidden'}`}>
-      <p className="fixed z-10 text-xl flex justify-center items-center cursor-pointer top-2 right-2 md:right-8 w-10 h-10 bg-white rounded-full"onClick={ () => {
+      <p className="fixed z-10 text-xl flex justify-center items-center cursor-pointer top-2 md:top-4 right-2 md:right-4 w-10 h-10 text-red-500 bg-white hover:bg-red-500 hover:text-white rounded-full transition-all duration-200"onClick={ () => {
           const body = document.querySelector("body")
           body.style.overflow = "auto"
           setToggle(!toggleList)
@@ -58,8 +55,9 @@ function AchievementsList(props) {
       
       { toggleList !== false && achievements.length !== 0 ? 
         <div>
-          <div style={{ backgroundImage: `url(https://njrzr-caravaggio.vercel.app/o:webp/q:25?image=${background})`, backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "cover" }} className="relative bg-secondary p-4 rounded-bl-xl rounded-br-xl w-full overflow-hidden before:absolute before:bg-black before:w-full before:h-full before:top-0 before:left-0 before:bg-opacity-25 h-1/4">
-            <h1 className="text-white drop-shadow shadow-black text-4xl font-semibold">{ game.name }</h1>
+          <div style={{ backgroundImage: `url(https://njrzr-caravaggio.vercel.app/o:webp/q:25?image=${background})`, backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "cover" }} className="relative flex flex-col justify-center items-center font-medium bg-secondary p-4 rounded-bl-xl rounded-br-xl w-full overflow-hidden before:absolute before:bg-black before:w-full before:h-full before:top-0 before:left-0 before:bg-opacity-50 h-48">
+            <h1 className="text-white drop-shadow shadow-black text-4xl font-bold">{ game.name }</h1>
+            <div className="bg-white w-10/12 h-1 my-4 rounded-full z-10"></div>
             <p className="text-white drop-shadow shadow-black text-xl">Achievements: { game.achievement.currentAchievements + ' / ' + achievementsCount }</p>
             <p className="text-white drop-shadow shadow-black text-xl">Score: { game.achievement.currentGamerscore + ' / ' + game.achievement.totalGamerscore }</p>
             <p className="text-white drop-shadow shadow-black text-xl">Completed: { game.achievement.currentGamerscore === game.achievement.totalGamerscore ? 'Yes' : 'No' }</p>
@@ -72,10 +70,10 @@ function AchievementsList(props) {
                     <div className={`${value.progressState === 'Achieved' || value.isSecret !== true || game.devices.indexOf('Xbox360') !== -1 ? 'block' : 'hidden'}`}>
                       <div className="flex flex-row items-center">
                         { value.mediaAssets !== undefined ?
-                          <img className="relative object-cover h-16 w-1/4 rounded-tl-xl rounded-br-xl" src={`https://njrzr-caravaggio.vercel.app/o:webp/q:25?image=${value.mediaAssets[0].url}`} alt="Achievement Logo" />
+                          <img className="relative object-cover h-16 w-1/4 rounded-tl-xl rounded-br-xl" src={`https://njrzr-caravaggio.vercel.app/o:webp/q:25?image=${value.mediaAssets[0].url}`} alt={`Achievement Logo #${index}`} />
                           : ''
                         }
-                        <p className="text-white w-3/4 py-1 px-3 text-xl md:text-2xl font-semibold">
+                        <p className="text-white w-3/4 py-1 px-3 text-xl md:text-2xl font-semibold flex items-center">
                           { value.rarity.currentPercentage <= 10 && <FontAwesomeIcon icon={faGem} className="text-base" /> } { value.name }
                         </p>
                       </div>
@@ -106,11 +104,11 @@ function AchievementsList(props) {
         </div>
         : 
         <div className="fixed top-0 z-10 w-full h-screen bg-terciary">
-          <div className="relative shadow-lg rounded-bl-xl rounded-br-xl w-full h-36 loader bg-no-repeat bg-gradient-to-l from-transparent via-secondary to-transparent"></div>
+          <div className="relative shadow-lg rounded-bl-xl rounded-br-xl w-full h-48 loader bg-no-repeat bg-gradient-to-l from-transparent via-secondary to-transparent"></div>
 
-          <div className="grid md:grid-cols-3 md:grid-rows-4 p-1 md:p-2 gap-1 md:gap-2 h-screen">
+          <div className="grid md:grid-cols-3 auto-rows-min p-1 md:p-2 gap-1 md:gap-2 h-screen">
             {
-              [1, 2, 3, 4, 5, 6, 7, 8, 9].map((value, index) => {
+              [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18].map((value, index) => {
                 return <div className="border rounded-2xl loader h-40 bg-no-repeat bg-gradient-to-l from-transparent via-secondary to-transparent" key={`skeleton-${index}`}>
                 </div>
               })

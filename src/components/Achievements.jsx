@@ -11,6 +11,7 @@ function Achievements(props) {
   const [toggleList, setToggle] = useState(false);
   const [game, setGame] = useState([]);
   const [userId, setUser] = useState('');
+  const sliceItems = 15
 
   useEffect(() => {
     axios({
@@ -42,7 +43,7 @@ function Achievements(props) {
       }
 
       setTitlesArr(games);
-      sliced = games.slice(0, 12);
+      sliced = games.slice(0, sliceItems);
       setAchievements(sliced);
       achievementF(true);
     };
@@ -53,7 +54,7 @@ function Achievements(props) {
     let background = "";
     let flag = false;
     let count = 0;
-    let random = Math.floor(Math.random() * 12);
+    let random = Math.floor(Math.random() * sliceItems);
 
     while (flag !== true) {
       if (response.titles[random].images[count].type === "SuperHeroArt") {
@@ -71,7 +72,7 @@ function Achievements(props) {
 
   const pageGames = (response, index = 0) => {
     let sliced;
-    sliced = response.slice(index, index + 12);
+    sliced = response.slice(index, index + sliceItems);
     setAchievements(sliced);
   };
 
@@ -83,18 +84,17 @@ function Achievements(props) {
   }
 
   return (
-    <div className="relative flex flex-wrap w-full md:w-11/12 my-1 md:my-2 mx-auto p-4 md:p-1">
+    <div className="relative grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 auto-rows-min items-center justify-items-center place-items-center gap-2 md:gap-6 w-11/12 mx-auto">
       <CaravaggioProvider url="https://njrzr-caravaggio.vercel.app">
         {achievements.map((value, index) => {
           return (
             <div
               key={value["titleId"]}
-              className="group cursor-pointer flex justify-center md:block relative w-full md:w-1/4 overflow-hidden my-1 md:my-auto md:p-1 transition duration-200 z-0 md:hover:scale-105 md:hover:z-10"
-
+              className="group cursor-pointer bg-slate-700 flex flex-row md:flex-col justify-center items-center relative w-full md:w-80 h-auto overflow-hidden transition duration-200 z-0 md:hover:scale-105 md:hover:z-10 rounded-lg"
               onClick={() => setView(value)}
             >
               <Image
-                className={`object-contain bg-opacity-50 transition duration-300 md:group-hover:bg-opacity-100 h-36 md:h-[300px] w-36 md:w-full md:mx-auto rounded-tl-lg rounded-bl-lg md:rounded-tr-lg md:rounded-bl-none ${value.achievement.totalGamerscore ===
+                className={`object-contain bg-opacity-50 transition duration-300 md:group-hover:bg-opacity-100 w-36 md:w-full h-36 md:h-80 mx-auto ${value.achievement.totalGamerscore ===
                   value.achievement.currentGamerscore
                   ? "bg-gradient-to-bl md:bg-gradient-to-tr from-primary to-gold"
                   : "bg-terciary"
@@ -105,15 +105,16 @@ function Achievements(props) {
               />
 
               <div
-                className={`flex flex-col justify-between p-2 w-[60vw] md:w-full h-36 md:h-40 bg-opacity-50 transition duration-300 md:group-hover:bg-opacity-100 rounded-tr-lg md:rounded-tr-none md:rounded-bl-lg rounded-br-lg overflow-hidden ${value.achievement.totalGamerscore ===
+                className={`flex flex-col justify-between items-center p-2 w-full h-36 md:h-40 mx-auto bg-opacity-50 transition duration-300 md:group-hover:bg-opacity-100 overflow-hidden ${value.achievement.totalGamerscore ===
                   value.achievement.currentGamerscore
                   ? "bg-gradient-to-br from-primary to-gold"
                   : "bg-terciary"
                   } `}
               >
-                <p className="font-poppins font-semibold text-base md:text-xl text-white drop-shadow-text">
+                <p className="font-poppins font-semibold text-base text-center md:text-xl text-white drop-shadow-text">
                   {value.name}
                 </p>
+
                 <div>
                   <p className="font-poppins text-sm md:text-base font-medium text-white drop-shadow-text my-1">
                     Achievements: {value.achievement.currentAchievements}
@@ -128,7 +129,7 @@ function Achievements(props) {
           );
         })}
       </CaravaggioProvider>
-      <Navigation pageGames={pageGames} titles={titlesArr} />
+      <Navigation pageGames={pageGames} titles={titlesArr} sliceItems={sliceItems} />
       <AchievementsList apiKey={apiKey} url={url} userId={userId} game={game} toggleList={toggleList} setToggle={setToggle} />
     </div>
   );
