@@ -13,8 +13,8 @@ function AchievementsList(props) {
 
   if (game.length !== 0) {
     gameUrl = game.devices.indexOf('Xbox360') !== -1 ? 
-      `https://xbl.io/api/v2/achievements/player/${userId}/${game.titleId}`
-      : `https://xbl.io/api/v2/achievements/x360/${userId}/title/${game.titleId}`;
+      `https://xbl.io/api/v2/achievements/player/${userId}/title/${game.titleId}`
+      : `https://xbl.io/api/v2/achievements/title/${game.titleId}`;
 
     while (count < game.images.length) {
       if (game.images[count].type === "SuperHeroArt" || game.images[count].type === "WideBackgroundImage") {
@@ -38,7 +38,10 @@ function AchievementsList(props) {
           "Target-URL": gameUrl
         },
       })
-        .then((response) => setAchievements(response.data))
+        .then((response) => {
+          console.log(response.data)
+          setAchievements(response.data)
+        })
         .catch((error) => console.log("error", error))
     : setAchievements([]);
   }, [toggleList]);
@@ -66,28 +69,30 @@ function AchievementsList(props) {
           <div className="grid md:grid-cols-3 p-1 md:p-2 gap-1 md:gap-2 h-3/4">
             { achievements.length !== 0 ? 
                 achievements.achievements.map((value, index) => { 
-                  return <div className={`relative border rounded-xl w-full bg-terciary ${game.devices.indexOf('Xbox360') !== -1 ? 'opacity-100' : value.progressState !== 'Achieved' ? 'opacity-40' : 'opacity-100'}`} key={`achievement-${index}`}>
-                    <div className={`${value.progressState === 'Achieved' || value.isSecret !== true || game.devices.indexOf('Xbox360') !== -1 ? 'block' : 'hidden'}`}>
-                      <div className="flex flex-row items-center">
+                  return <div className={`relative border rounded-xl w-full h-60 flex items-center justify-center bg-terciary ${game.devices.indexOf('Xbox360') !== -1 ? 'opacity-100' : value.progressState !== 'Achieved' ? 'opacity-40' : 'opacity-100'}`} key={`achievement-${index}`}>
+                    <div className={`relative w-full h-full flex flex-col justify-between ${value.progressState === 'Achieved' || value.isSecret !== true || game.devices.indexOf('Xbox360') !== -1 ? 'block' : 'hidden'}`}>
+                      <div className="flex">
                         { value.mediaAssets !== undefined ?
-                          <img className="relative object-cover h-16 w-1/4 rounded-tl-xl rounded-br-xl" src={`https://njrzr-caravaggio.vercel.app/o:webp/q:25?image=${value.mediaAssets[0].url}`} alt={`Achievement Logo #${index}`} />
+                          <img className="relative object-cover h-24 w-2/6 rounded-tl-xl rounded-br-xl" src={`https://njrzr-caravaggio.vercel.app/o:webp/q:25?image=${value.mediaAssets[0].url}`} alt={`Achievement Logo #${index}`} />
                           : ''
                         }
-                        <p className="text-white w-3/4 py-1 px-3 text-xl md:text-2xl font-semibold flex items-center">
+                        
+                        <p className="text-white w-4/6 py-1 px-3 text-xl md:text-2xl font-semibold flex items-center gap-2">
                           { value.rarity.currentPercentage <= 10 && <FontAwesomeIcon icon={faGem} className="text-base" /> } { value.name }
                         </p>
                       </div>
 
-                      <p className="text-white py-1 px-3 md:text-xl">{ value.progressState !== 'Achieved' ? value.lockedDescription : value.description }</p>
-                      <p className="text-white py-1 px-3 text-sm md:text-base">
+                      <p className="text-white border-t border-b py-1 px-3 md:text-xl text-center">{ value.progressState !== 'Achieved' ? value.lockedDescription : value.description }</p>
+
+                      <p className="text-white py-1 px-3 text-sm md:text-base text-center">
                         { value.rewards !== undefined ? value.rewards.length !== 0 ? value.rewards[0].type !== 'Art' ?
                           `Gamerscore: ${value.rewards[0].value}` : "Art achievement" : "Gamerscore: 0" : `Gamerscore: ${value.gamerscore}`
                         }
                         { game.devices.indexOf('Xbox360') === -1 &&
-                          ` | ${value.progressState !== 'Achieved' ? 'Locked' : 'Unlocked'}`
+                          ` · ${value.progressState !== 'Achieved' ? 'Locked' : 'Unlocked'}`
                         }
-                        { ` | ${value.rarity.currentCategory}` }
-                        { ` | ${value.rarity.currentPercentage}%` }
+                        { ` · ${value.rarity.currentCategory}` }
+                        { ` - ${value.rarity.currentPercentage}%` }
                       </p>
                     </div>
 
