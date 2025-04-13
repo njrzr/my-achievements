@@ -45,7 +45,7 @@ function AchievementsList(props) {
 
   return (
     <div className={`fixed top-0 left-0 z-20 bg-primary w-full h-screen overflow-auto ${toggleList === true ? 'block' : 'hidden'}`}>
-      <p className="fixed z-10 text-xl flex justify-center items-center cursor-pointer top-2 md:top-4 right-2 md:right-4 w-10 h-10 text-red-500 bg-white hover:bg-red-500 hover:text-white rounded-full transition-all duration-200"onClick={ () => {
+      <p className="fixed z-10 text-xl flex justify-center items-center cursor-pointer top-2 md:top-4 right-2 md:right-4 w-10 h-10 text-red-500 bg-white/50 md:bg-white hover:bg-red-500 hover:text-white rounded-full transition-all duration-200"onClick={ () => {
           const body = document.querySelector("body")
           body.style.overflow = "auto"
           setToggle(!toggleList)
@@ -55,8 +55,8 @@ function AchievementsList(props) {
       
       { toggleList !== false && achievements.length !== 0 ? 
         <div>
-          <div style={{ backgroundImage: `url(https://njrzr-caravaggio.vercel.app/o:webp/q:25?image=${background})`, backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "cover" }} className="relative flex flex-col justify-center items-center font-medium bg-secondary p-4 rounded-bl-xl rounded-br-xl w-full overflow-hidden before:absolute before:bg-black before:w-full before:h-full before:top-0 before:left-0 before:bg-opacity-50 h-48">
-            <h1 className="text-white drop-shadow shadow-black text-4xl font-bold">{ game.name }</h1>
+          <div style={{ backgroundImage: `url(https://njrzr-caravaggio.vercel.app/o:webp/q:25?image=${background})`, backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "cover" }} className="relative flex flex-col justify-center items-center font-medium bg-secondary p-4 rounded-bl-xl rounded-br-xl w-full overflow-hidden before:absolute before:bg-black before:w-full before:h-full before:top-0 before:left-0 before:bg-opacity-50 h-auto md:h-48">
+            <h1 className="text-white text-center drop-shadow shadow-black text-2xl md:text-4xl font-bold">{ game.name }</h1>
             <div className="bg-white w-10/12 h-1 my-4 rounded-full z-10"></div>
             <p className="text-white flex gap-2 items-center drop-shadow shadow-black text-xl">
               <FontAwesomeIcon icon={faMedal} />
@@ -85,7 +85,7 @@ function AchievementsList(props) {
                           :  <img className="relative object-cover h-24 w-2/6 rounded-tl-xl rounded-br-xl" src="xbox-360.jpg" alt="Fallback Image" />
                         }
                         
-                        <p className="text-white w-4/6 py-1 px-3 text-xl md:text-2xl font-semibold flex justify-center items-center gap-2">
+                        <p className="text-white text-center w-4/6 py-1 px-3 text-xl md:text-2xl font-semibold flex justify-center items-center gap-2">
                           { value.rarity.currentPercentage <= 10 && <FontAwesomeIcon icon={faGem} className="text-gold" /> } { value.name }
                         </p>
                       </div>

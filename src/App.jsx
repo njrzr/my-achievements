@@ -29,8 +29,8 @@ function App() {
         </div>
       }
 
-      <User apiKey={apiKey} url={prod} userF={setUserFlag} />
-      <Achievements apiKey={apiKey} url={prod}  achievementF={setAchievementFlag} />
+      <User apiKey={apiKey} url={dev} userF={setUserFlag} />
+      <Achievements apiKey={apiKey} url={dev}  achievementF={setAchievementFlag} />
       <Footer />
     </div>
   );
