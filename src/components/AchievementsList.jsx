@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark, faGem, faLock } from "@fortawesome/free-solid-svg-icons";
+import { faXmark, faGem, faUserNinja, faMedal, faListCheck } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -38,10 +38,7 @@ function AchievementsList(props) {
           "Target-URL": gameUrl
         },
       })
-        .then((response) => {
-          console.log(response.data)
-          setAchievements(response.data)
-        })
+        .then((response) => setAchievements(response.data))
         .catch((error) => console.log("error", error))
     : setAchievements([]);
   }, [toggleList]);
@@ -61,44 +58,60 @@ function AchievementsList(props) {
           <div style={{ backgroundImage: `url(https://njrzr-caravaggio.vercel.app/o:webp/q:25?image=${background})`, backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "cover" }} className="relative flex flex-col justify-center items-center font-medium bg-secondary p-4 rounded-bl-xl rounded-br-xl w-full overflow-hidden before:absolute before:bg-black before:w-full before:h-full before:top-0 before:left-0 before:bg-opacity-50 h-48">
             <h1 className="text-white drop-shadow shadow-black text-4xl font-bold">{ game.name }</h1>
             <div className="bg-white w-10/12 h-1 my-4 rounded-full z-10"></div>
-            <p className="text-white drop-shadow shadow-black text-xl">Achievements: { game.achievement.currentAchievements + ' / ' + achievementsCount }</p>
-            <p className="text-white drop-shadow shadow-black text-xl">Score: { game.achievement.currentGamerscore + ' / ' + game.achievement.totalGamerscore }</p>
-            <p className="text-white drop-shadow shadow-black text-xl">Completed: { game.achievement.currentGamerscore === game.achievement.totalGamerscore ? 'Yes' : 'No' }</p>
+            <p className="text-white flex gap-2 items-center drop-shadow shadow-black text-xl">
+              <FontAwesomeIcon icon={faMedal} />
+              { game.achievement.currentAchievements + ' / ' + achievementsCount }
+            </p>
+            <p className="text-white flex gap-2 items-center drop-shadow shadow-black text-xl">
+              <span className="flex items-center font-poppins justify-center text-base bg-white text-primary rounded-full w-6 h-6">
+                G
+              </span>
+              { game.achievement.currentGamerscore + ' / ' + game.achievement.totalGamerscore }
+            </p>
+            <p className="text-white flex gap-2 items-center drop-shadow shadow-black text-xl">
+              <FontAwesomeIcon icon={faListCheck} />
+              { game.achievement.currentGamerscore === game.achievement.totalGamerscore ? 'Yes' : 'No' }
+            </p>
           </div>
 
           <div className="grid md:grid-cols-3 p-1 md:p-2 gap-1 md:gap-2 h-3/4">
             { achievements.length !== 0 ? 
                 achievements.achievements.map((value, index) => { 
                   return <div className={`relative border rounded-xl w-full h-60 flex items-center justify-center bg-terciary ${game.devices.indexOf('Xbox360') !== -1 ? 'opacity-100' : value.progressState !== 'Achieved' ? 'opacity-40' : 'opacity-100'}`} key={`achievement-${index}`}>
-                    <div className={`relative w-full h-full flex flex-col justify-between ${value.progressState === 'Achieved' || value.isSecret !== true || game.devices.indexOf('Xbox360') !== -1 ? 'block' : 'hidden'}`}>
+                    <div className={`relative w-full h-full flex flex-col justify-start gap-2 ${value.progressState === 'Achieved' || value.isSecret !== true || game.devices.indexOf('Xbox360') !== -1 ? 'block' : 'hidden'}`}>
                       <div className="flex">
                         { value.mediaAssets !== undefined ?
-                          <img className="relative object-cover h-24 w-2/6 rounded-tl-xl rounded-br-xl" src={`https://njrzr-caravaggio.vercel.app/o:webp/q:25?image=${value.mediaAssets[0].url}`} alt={`Achievement Logo #${index}`} />
-                          : ''
+                          <img className="relative bg-white object-cover h-24 w-2/6 rounded-tl-xl rounded-br-xl" src={`https://njrzr-caravaggio.vercel.app/o:webp/q:25?image=${value.mediaAssets[0].url}`} alt={`Achievement Logo #${index}`} />
+                          :  <img className="relative object-cover h-24 w-2/6 rounded-tl-xl rounded-br-xl" src="xbox-360.jpg" alt="Fallback Image" />
                         }
                         
-                        <p className="text-white w-4/6 py-1 px-3 text-xl md:text-2xl font-semibold flex items-center gap-2">
-                          { value.rarity.currentPercentage <= 10 && <FontAwesomeIcon icon={faGem} className="text-base" /> } { value.name }
+                        <p className="text-white w-4/6 py-1 px-3 text-xl md:text-2xl font-semibold flex justify-center items-center gap-2">
+                          { value.rarity.currentPercentage <= 10 && <FontAwesomeIcon icon={faGem} className="text-gold" /> } { value.name }
                         </p>
                       </div>
 
-                      <p className="text-white border-t border-b py-1 px-3 md:text-xl text-center">{ value.progressState !== 'Achieved' ? value.lockedDescription : value.description }</p>
+                      <p className="text-white border-t border-b py-1 px-3 md:text-xl text-center">
+                        { value.progressState !== 'Achieved' ? value.lockedDescription : value.description }
+                      </p>
 
-                      <p className="text-white py-1 px-3 text-sm md:text-base text-center">
+                      <div className="absolute left-0 right-0 bottom-2 flex justify-center items-center gap-1 text-white py-1 px-3 text-sm md:text-base text-center">
+                        <span className="flex items-center font-poppins justify-center text-base bg-white text-primary rounded-full w-6 h-6">
+                          G
+                        </span>
                         { value.rewards !== undefined ? value.rewards.length !== 0 ? value.rewards[0].type !== 'Art' ?
-                          `Gamerscore: ${value.rewards[0].value}` : "Art achievement" : "Gamerscore: 0" : `Gamerscore: ${value.gamerscore}`
+                          `${value.rewards[0].value}` : "Art achievement" : "0" : `${value.gamerscore}`
                         }
                         { game.devices.indexOf('Xbox360') === -1 &&
                           ` · ${value.progressState !== 'Achieved' ? 'Locked' : 'Unlocked'}`
                         }
                         { ` · ${value.rarity.currentCategory}` }
                         { ` - ${value.rarity.currentPercentage}%` }
-                      </p>
+                      </div>
                     </div>
 
                     { game.devices.indexOf('Xbox360') === -1 &&
-                      <div className={`flex items-center h-36 justify-center ${value.isSecret === true && value.progressState !== 'Achieved' ? 'block' : 'hidden'}`}>
-                        <FontAwesomeIcon className="text-4xl" icon={faLock} />
+                      <div className={`text-xl text-white flex gap-4 items-center h-36 justify-center ${value.isSecret === true && value.progressState !== 'Achieved' ? 'block' : 'hidden'}`}>
+                        <FontAwesomeIcon className="text-4xl" icon={faUserNinja} /> Secret Achievement
                       </div>
                     }
                   </div>
@@ -114,7 +127,7 @@ function AchievementsList(props) {
           <div className="grid md:grid-cols-3 auto-rows-min p-1 md:p-2 gap-1 md:gap-2 h-screen">
             {
               [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18].map((value, index) => {
-                return <div className="border rounded-2xl loader h-40 bg-no-repeat bg-gradient-to-l from-transparent via-secondary to-transparent" key={`skeleton-${index}`}>
+                return <div className="border rounded-2xl loader h-60 bg-no-repeat bg-gradient-to-l from-transparent via-secondary to-transparent" key={`skeleton-${index}`}>
                 </div>
               })
             }

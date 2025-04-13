@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import Navigation from "./Navigation";
 import AchievementsList from "./AchievementsList";
 import { CaravaggioProvider, Image } from "caravaggio-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMedal } from "@fortawesome/free-solid-svg-icons";
 
 function Achievements(props) {
   const { achievementF, url, apiKey } = props;
@@ -105,7 +107,7 @@ function Achievements(props) {
               />
 
               <div
-                className={`flex flex-col justify-between items-center p-2 w-full h-36 md:h-40 mx-auto bg-opacity-50 transition duration-300 md:group-hover:bg-opacity-100 overflow-hidden ${value.achievement.totalGamerscore ===
+                className={`flex flex-col justify-center items-center gap-4 p-2 w-full h-36 md:h-40 mx-auto bg-opacity-50 transition duration-300 md:group-hover:bg-opacity-100 overflow-hidden ${value.achievement.totalGamerscore ===
                   value.achievement.currentGamerscore
                   ? "bg-gradient-to-br from-primary to-gold"
                   : "bg-terciary"
@@ -116,11 +118,15 @@ function Achievements(props) {
                 </p>
 
                 <div>
-                  <p className="font-poppins text-sm md:text-base font-medium text-white drop-shadow-text my-1">
-                    Achievements: {value.achievement.currentAchievements}
+                  <p className="font-poppins flex gap-2 justify-center items-center text-sm md:text-base font-medium text-white drop-shadow-text">
+                    <FontAwesomeIcon icon={faMedal} /> {value.achievement.currentAchievements}
                   </p>
-                  <p className="font-poppins text-sm md:text-base font-medium text-white drop-shadow-text">
-                    Score: {value.achievement.currentGamerscore} /{" "}
+
+                  <p className="font-poppins flex items-center gap-2 text-sm md:text-base font-medium text-white">
+                    <span className="flex items-center font-poppins justify-center text-base bg-white text-primary rounded-full w-6 h-6">
+                      G
+                    </span>
+                    {value.achievement.currentGamerscore} /{" "}
                     {value.achievement.totalGamerscore}
                   </p>
                 </div>
