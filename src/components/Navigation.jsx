@@ -54,7 +54,7 @@ function Navigation(props) {
   };
 
   return (
-    <div className="flex align-center justify-center flex-wrap mt-2 mx-auto p-2 md:col-span-3 xl:col-span-5">
+    <div className="flex align-center justify-center flex-wrap mt-2 mx-auto p-2 md:col-span-3 lg:col xl:col-span-5">
       <button
         onClick={(e) => previousBtn(index, e)}
         className={`${index < 1

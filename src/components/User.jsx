@@ -22,6 +22,7 @@ function User(props) {
       .catch((err) => console.log(err));
 
     const setResponse = (response) => {
+      console.log(response["profileUsers"][0])
       setPicture(response["profileUsers"][0].settings[0].value);
       setGamerscore(response["profileUsers"][0].settings[1].value);
       setUsername(response["profileUsers"][0].settings[2].value);
@@ -50,7 +51,7 @@ function User(props) {
           </span>
           {gamerscore}
         </p>
-        <p className="bio font-poppins text-white font-medium drop-shadow-text md:text-xl">
+        <p className="font-poppins text-white font-medium drop-shadow-text md:text-2xl">
           Bio: {bio}
         </p>
       </div>
