@@ -22,7 +22,6 @@ function User(props) {
       .catch((err) => console.log(err));
 
     const setResponse = (response) => {
-      console.log(response["profileUsers"][0])
       setPicture(response["profileUsers"][0].settings[0].value);
       setGamerscore(response["profileUsers"][0].settings[1].value);
       setUsername(response["profileUsers"][0].settings[2].value);
@@ -41,17 +40,21 @@ function User(props) {
         ></img>
       </div>
 
-      <div className="relative overflow-hidden flex flex-col justify-center w-full md:w-8/12 md:h-56 p-4 md:px-8 mt-2 md:my-auto bg-primary bg-opacity-50 rounded-lg md:rounded-tr-full md:rounded-br-full">
-        <p className="username font-press text-white drop-shadow-text text-2xl md:text-3xl">
-          {username}
-        </p>
-        <p className="flex gap-2 gamerscore font-press text-white drop-shadow-text md:text-xl my-2">
-          <span className="flex items-center font-poppins justify-center text-base bg-white text-primary rounded-full w-6 h-6">
-            G
-          </span>
-          {gamerscore}
-        </p>
-        <p className="font-poppins text-white font-medium drop-shadow-text md:text-2xl">
+      <div className="relative overflow-hidden flex flex-col justify-evenly w-full md:w-8/12 md:h-56 p-4 md:px-8 mt-2 md:my-auto bg-primary bg-opacity-50 rounded-lg md:rounded-tr-full md:rounded-br-full">
+        <div className="w-11/12 flex justify-between items-center">
+          <p className="username font-press text-white drop-shadow-text text-2xl md:text-3xl">
+            {username}
+          </p>
+
+          <p className="flex justify-center items-center gap-2 bg-secondary px-4 py-2 rounded-full gamerscore font-press text-white drop-shadow-text md:text-xl my-2">
+            <span className="flex items-center font-poppins justify-center text-base bg-white text-primary rounded-full w-6 h-6">
+              G
+            </span>
+            {gamerscore}
+          </p>
+        </div>
+
+        <p className="w-11/12 font-poppins text-white font-medium drop-shadow-text md:text-xl">
           Bio: {bio}
         </p>
       </div>

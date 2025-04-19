@@ -15,7 +15,7 @@ function Achievements(props) {
   const [toggleList, setToggle] = useState(false);
   const [game, setGame] = useState([]);
   const [userId, setUser] = useState('');
-  const sliceItems = 15
+  const sliceItems = 12
 
   useEffect(() => {
     axios({
@@ -97,8 +97,8 @@ function Achievements(props) {
   }
 
   return (
-    <div className="relative grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 auto-rows-min items-center justify-items-center place-items-center gap-2 md:gap-6 w-11/12 mx-auto">
-      {/* <div className="col-span-1 md:col-span-3 xl:col-span-5 flex justify-center item-center">
+    <div className="relative grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 auto-rows-min items-center justify-items-center place-items-center gap-2 md:gap-6 w-11/12 mx-auto">
+      {/* <div className="col-span-1 md:col-span-3 xl:col-span-4 flex justify-center item-center">
         <div
           key="Xbox360"
           className="bg-terciary flex flex-row md:flex-col justify-center items-center relative w-full md:w-80 h-auto overflow-hidden transition duration-200 z-0 rounded-lg"
