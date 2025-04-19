@@ -41,7 +41,7 @@ function User(props) {
       </div>
 
       <div className="relative overflow-hidden flex flex-col justify-evenly w-full md:w-8/12 md:h-56 p-4 md:px-8 mt-2 md:my-auto bg-primary bg-opacity-50 rounded-lg md:rounded-tr-full md:rounded-br-full">
-        <div className="w-11/12 flex justify-between items-center">
+        <div className="w-11/12 flex flex-col md:flex-row gap-2 md:gap-0 justify-center md:justify-between items-center">
           <p className="username font-press text-white drop-shadow-text text-2xl md:text-3xl">
             {username}
           </p>
