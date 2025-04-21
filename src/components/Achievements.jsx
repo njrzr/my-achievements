@@ -40,15 +40,9 @@ function Achievements(props) {
       let sliced;
       let games = [];
       let count = 0;
-      let achievements = 0;
-      let score = 0;
 
       while (count < response.titles.length) {
-        if (response.titles[count].achievement.sourceVersion !== 0) games.push(response.titles[count]);
-        // if (response.titles[count].achievement.sourceVersion !== 0 && response.titles[count].devices.indexOf('Xbox360') !== -1) {
-        //   achievements += response.titles[count].achievement.currentAchievements
-        //   score += response.titles[count].achievement.currentGamerscore
-        // }
+        if (response.titles[count].achievement.sourceVersion !== 0 && response.titles[count].achievement.currentAchievements !== 0) games.push(response.titles[count]);
 
         count++;
       }
@@ -56,8 +50,6 @@ function Achievements(props) {
       setTitlesArr(games);
       sliced = games.slice(0, sliceItems);
       setAchievements(sliced);
-      // setAchievements360(achievements);
-      // setScore360(score);
       achievementF(true);
     };
   }, [achievementF]);
@@ -98,40 +90,6 @@ function Achievements(props) {
 
   return (
     <div className="relative grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 auto-rows-min items-center justify-items-center place-items-center gap-2 md:gap-6 w-11/12 mx-auto">
-      {/* <div className="col-span-1 md:col-span-3 xl:col-span-4 flex justify-center item-center">
-        <div
-          key="Xbox360"
-          className="bg-terciary flex flex-row md:flex-col justify-center items-center relative w-full md:w-80 h-auto overflow-hidden transition duration-200 z-0 rounded-lg"
-        >
-          <img
-            className="object-cover object-left bg-opacity-50 transition duration-300 w-36 md:w-full h-36 md:h-80 mx-auto"
-            src="xbox-360.jpg"
-            alt="Xbox 360 Default"
-          />
-
-          <div
-            className="flex flex-col justify-center items-center gap-4 p-2 w-full h-36 md:h-40 mx-auto bg-opacity-50 transition duration-300 overflow-hidden"
-          >
-            <p className="font-poppins font-semibold text-base text-center md:text-xl text-white drop-shadow-text">
-              Xbox 360 Achievements
-            </p>
-
-            <div className="flex flex-col gap-1">
-              <p className="font-poppins flex gap-2 justify-center items-center text-sm md:text-base font-medium text-white drop-shadow-text">
-                <FontAwesomeIcon icon={faMedal} /> {achievements360}
-              </p>
-
-              <p className="font-poppins flex items-center gap-2 text-sm md:text-base font-medium text-white">
-                <span className="flex items-center font-poppins justify-center text-base bg-white text-primary rounded-full w-6 h-6">
-                  G
-                </span>
-                {score360}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div> */}
-
       <CaravaggioProvider url="https://njrzr-caravaggio.vercel.app">
         {achievements.map((value, index) => {
           return (
@@ -141,7 +99,7 @@ function Achievements(props) {
               onClick={() => setView(value)}
             >
               <Image
-                className={`object-contain bg-opacity-50 transition duration-300 md:group-hover:bg-opacity-100 w-36 md:w-full h-36 md:h-80 mx-auto ${value.achievement.totalGamerscore ===
+                className={`object-contain bg-opacity-50 transition duration-300 md:group-hover:bg-opacity-100 w-60 md:w-full h-36 md:h-80 mx-auto overflow-hidden ${value.achievement.totalGamerscore ===
                   value.achievement.currentGamerscore
                   ? "bg-gradient-to-bl md:bg-gradient-to-tr from-primary to-gold"
                   : "bg-terciary"
