@@ -731,10 +731,6 @@ video {
   z-index: 20;
 }
 
-.col-span-1{
-  grid-column: span 1 / span 1;
-}
-
 .mx-auto{
   margin-left: auto;
   margin-right: auto;
@@ -839,8 +835,8 @@ video {
   width: 100%;
 }
 
-.w-36{
-  width: 9rem;
+.w-60{
+  width: 15rem;
 }
 
 .w-6{
@@ -865,30 +861,6 @@ video {
 
 .w-56{
   width: 14rem;
-}
-
-.w-12{
-  width: 3rem;
-}
-
-.w-40{
-  width: 10rem;
-}
-
-.w-44{
-  width: 11rem;
-}
-
-.w-52{
-  width: 13rem;
-}
-
-.w-60{
-  width: 15rem;
-}
-
-.w-64{
-  width: 16rem;
 }
 
 .cursor-pointer{
@@ -1043,6 +1015,11 @@ video {
   background-color: rgb(87 23 45 / var(--tw-bg-opacity));
 }
 
+.bg-slate-700{
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+}
+
 .bg-terciary{
   --tw-bg-opacity: 1;
   background-color: rgb(158 41 80 / var(--tw-bg-opacity));
@@ -1051,11 +1028,6 @@ video {
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-slate-700{
-  --tw-bg-opacity: 1;
-  background-color: rgb(51 65 85 / var(--tw-bg-opacity));
 }
 
 .bg-primary{
@@ -1070,11 +1042,6 @@ video {
 .bg-black{
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
-}
-
-.bg-green-600{
-  --tw-bg-opacity: 1;
-  background-color: rgb(22 163 74 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-50{
@@ -1139,11 +1106,6 @@ video {
 .object-scale-down{
   -o-object-fit: scale-down;
      object-fit: scale-down;
-}
-
-.object-left{
-  -o-object-position: left;
-     object-position: left;
 }
 
 .p-2{
@@ -1364,10 +1326,6 @@ video {
 
   .md\:right-4{
     right: 1rem;
-  }
-
-  .md\:col-span-3{
-    grid-column: span 3 / span 3;
   }
 
   .md\:my-4{
@@ -1594,12 +1552,22 @@ video {
   }
 }
 
-@media (min-width: 1280px){
-  .xl\:col-span-4{
-    grid-column: span 4 / span 4;
+@media (min-width: 1024px){
+  .lg\:col-span-3{
+    grid-column: span 3 / span 3;
   }
 
-  .xl\:grid-cols-4{
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  .lg\:grid-cols-3{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px){
+  .xl\:col-span-5{
+    grid-column: span 5 / span 5;
+  }
+
+  .xl\:grid-cols-5{
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }

@@ -9,8 +9,6 @@ import { faMedal } from "@fortawesome/free-solid-svg-icons";
 function Achievements(props) {
   const { achievementF, url, apiKey } = props;
   const [achievements, setAchievements] = useState([]);
-  const [achievements360, setAchievements360] = useState(0);
-  const [score360, setScore360] = useState(0);
   const [titlesArr, setTitlesArr] = useState([]);
   const [toggleList, setToggle] = useState(false);
   const [game, setGame] = useState([]);
@@ -62,7 +60,7 @@ function Achievements(props) {
     let random = Math.floor(Math.random() * sliceItems);
 
     while (flag !== true) {
-      if (response.titles[random].images[count].type === "SuperHeroArt") {
+      if (response.titles[random].images[count].type === "SuperHeroArt" && response.titles[count].achievement.sourceVersion !== 0 && response.titles[count].achievement.currentAchievements !== 0) {
         background = response.titles[random].images[count].url;
         flag = true;
         count = 0;
@@ -89,7 +87,7 @@ function Achievements(props) {
   }
 
   return (
-    <div className="relative grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 auto-rows-min items-center justify-items-center place-items-center gap-2 md:gap-6 w-11/12 mx-auto">
+    <div className="relative grid grid-cols-1 lg:grid-cols-3  xl:grid-cols-5 auto-rows-min items-center justify-items-center place-items-center gap-2 md:gap-6 w-11/12 mx-auto">
       <CaravaggioProvider url="https://njrzr-caravaggio.vercel.app">
         {achievements.map((value, index) => {
           return (
