@@ -13,7 +13,7 @@ function Achievements(props) {
   const [toggleList, setToggle] = useState(false);
   const [game, setGame] = useState([]);
   const [userId, setUser] = useState('');
-  const sliceItems = 12
+  const sliceItems = 15
 
   useEffect(() => {
     axios({
