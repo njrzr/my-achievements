@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 function User(props) {
-  const { userF, url, apiKey } = props;
+  const { userF, failsafe, url, apiKey } = props;
   const [picture, setPicture] = useState("");
   const [username, setUsername] = useState("");
   const [gamerscore, setGamerscore] = useState("");
@@ -18,7 +18,10 @@ function User(props) {
         "Target-URL": "https://xbl.io/api/v2/account?"
       },
     })
-      .then((response) => setResponse(response.data))
+      .then((response) => {
+        if (response.data["profileUsers"] === undefined) return failsafe(true)
+        setResponse(response.data)
+      })
       .catch((err) => console.log(err));
 
     const setResponse = (response) => {
@@ -28,7 +31,7 @@ function User(props) {
       setBio(response["profileUsers"][0].settings[7].value);
       userF(true);
     };
-  }, [userF]);
+  }, [userF, failsafe]);
 
   return (
     <div className="relative mx-auto flex flex-col md:flex-row justify-center items-center w-full md:w-11/12 my-1 md:my-4 px-4 md:p-4">

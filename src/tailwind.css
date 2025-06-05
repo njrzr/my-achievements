@@ -1148,12 +1148,17 @@ video {
   text-align: right;
 }
 
+.font-press{
+  font-family: Press\ Start\ 2P;
+}
+
 .font-poppins{
   font-family: Poppins;
 }
 
-.font-press{
-  font-family: Press\ Start\ 2P;
+.text-5xl{
+  font-size: 3rem;
+  line-height: 1;
 }
 
 .text-base{
