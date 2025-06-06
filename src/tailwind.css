@@ -87,8 +87,8 @@ code {
   width: 100%;
   height: 100svh;
   border-radius: 0%;
-  -webkit-animation: loading infinite;
-          animation: loading infinite;
+  -webkit-animation: loading infinite 1000ms;
+          animation: loading infinite 1000ms;
 }
 
 .circles:nth-child(1) {
