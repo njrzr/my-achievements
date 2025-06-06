@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 function User(props) {
-  const { userF, failsafe, url, apiKey } = props;
+  const { userF, url, apiKey } = props;
   const [picture, setPicture] = useState("");
   const [username, setUsername] = useState("");
   const [gamerscore, setGamerscore] = useState("");
@@ -19,7 +19,7 @@ function User(props) {
       },
     })
       .then((response) => {
-        if (response.data["profileUsers"] === undefined) return failsafe(true)
+        if (typeof response.data["profileUsers"] !== 'object') return
         setResponse(response.data)
       })
       .catch((err) => console.log(err));
@@ -31,11 +31,11 @@ function User(props) {
       setBio(response["profileUsers"][0].settings[7].value);
       userF(true);
     };
-  }, [userF, failsafe]);
+  }, [userF]);
 
   return (
     <div className="relative mx-auto flex flex-col md:flex-row justify-center items-center w-full md:w-11/12 my-1 md:my-4 px-4 md:p-4">
-      <div className="relative w-full flex md:block justify-center md:w-56 md:h-56 md:bg-primary md:bg-opacity-50 md:rounded-tl-full md:rounded-bl-full">
+      <div className="relative w-full flex md:block justify-center md:w-56 md:h-56 md:bg-primary md:bg-opacity-75 md:rounded-tl-full md:rounded-bl-full">
         <img
           src={picture}
           className="user-pic relative w-56 h-56 rounded-full"
@@ -43,7 +43,7 @@ function User(props) {
         ></img>
       </div>
 
-      <div className="relative overflow-hidden flex flex-col justify-evenly items-center md:items-start w-full md:w-8/12 md:h-56 p-4 md:px-8 mt-2 md:my-auto bg-primary bg-opacity-50 rounded-lg md:rounded-tr-full md:rounded-br-full">
+      <div className="relative overflow-hidden flex flex-col justify-evenly items-center md:items-start w-full md:w-8/12 md:h-56 p-4 md:px-8 mt-2 md:my-auto bg-primary bg-opacity-75 rounded-lg md:rounded-tr-full md:rounded-br-full">
         <div className="w-11/12 flex flex-col md:flex-row gap-2 md:gap-0 justify-center md:justify-between items-center">
           <p className="username font-press text-white drop-shadow-text text-2xl md:text-3xl">
             {username}

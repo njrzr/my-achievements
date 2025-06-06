@@ -1,7 +1,8 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark, faGem, faUserNinja, faMedal, faListCheck, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useState } from "react";
 import axios from "axios";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark, faGem, faUserNinja, faMedal, faListCheck } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
 
 function AchievementsList(props) {
   const { userId, game, toggleList, setToggle, url, apiKey } = props;
@@ -52,7 +53,7 @@ function AchievementsList(props) {
   }
 
   return (
-    <div className={`fixed top-0 left-0 z-20 bg-primary w-full h-screen overflow-x-hidden overflow-y-scroll scrollbar-none ${toggleList === true ? 'block' : 'hidden'}`}>
+    <div className={`fixed top-0 left-0 z-20 bg-primary w-full h-screen overflow-x-hidden overflow-y-scroll scrollbar-none grow ${toggleList === true ? 'block' : 'hidden'}`}>
       <p className="fixed z-10 text-xl flex justify-center items-center cursor-pointer top-2 md:top-4 right-2 md:right-4 w-10 h-10 text-red-500 bg-white/50 md:bg-white hover:bg-red-500 hover:text-white rounded-full transition-all duration-200"onClick={ () => {
           const body = document.querySelector("body")
           body.style.overflow = "auto"

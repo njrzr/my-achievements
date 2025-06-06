@@ -21,7 +21,7 @@ code {
   }
 
   50% {
-    transform: scale(1.2);
+    transform: scale(1.4);
     background: hsl(340, 81%, 63%);
   }
 
@@ -38,7 +38,7 @@ code {
   }
 
   50% {
-    transform: scale(1.2);
+    transform: scale(1.4);
     background: hsl(340, 81%, 63%);
   }
 
@@ -87,33 +87,33 @@ code {
   width: 100%;
   height: 100svh;
   border-radius: 0%;
-  -webkit-animation: loading infinite 2s;
-          animation: loading infinite 2s;
+  -webkit-animation: loading infinite;
+          animation: loading infinite;
 }
 
 .circles:nth-child(1) {
-  -webkit-animation: progression 1000ms infinite 100ms;
-          animation: progression 1000ms infinite 100ms;
+  -webkit-animation: progression 1500ms infinite 100ms;
+          animation: progression 1500ms infinite 100ms;
 }
 
 .circles:nth-child(2) {
-  -webkit-animation: progression 1000ms infinite 200ms;
-          animation: progression 1000ms infinite 200ms;
+  -webkit-animation: progression 1500ms infinite 200ms;
+          animation: progression 1500ms infinite 200ms;
 }
 
 .circles:nth-child(3) {
-  -webkit-animation: progression 1000ms infinite 300ms;
-          animation: progression 1000ms infinite 300ms;
+  -webkit-animation: progression 1500ms infinite 300ms;
+          animation: progression 1500ms infinite 300ms;
 }
 
 .circles:nth-child(4) {
-  -webkit-animation: progression 1000ms infinite 400ms;
-          animation: progression 1000ms infinite 400ms;
+  -webkit-animation: progression 1500ms infinite 400ms;
+          animation: progression 1500ms infinite 400ms;
 }
 
 .circles:nth-child(5) {
-  -webkit-animation: progression 1000ms infinite 500ms;
-          animation: progression 1000ms infinite 500ms;
+  -webkit-animation: progression 1500ms infinite 500ms;
+          animation: progression 1500ms infinite 500ms;
 }
 
 .scrollbar-none {
@@ -751,6 +751,10 @@ video {
   margin-bottom: 0.5rem;
 }
 
+.mt-4{
+  margin-top: 1rem;
+}
+
 .mt-2{
   margin-top: 0.5rem;
 }
@@ -761,6 +765,10 @@ video {
 
 .block{
   display: block;
+}
+
+.inline{
+  display: inline;
 }
 
 .flex{
@@ -819,6 +827,10 @@ video {
   height: 12rem;
 }
 
+.h-2{
+  height: 0.5rem;
+}
+
 .h-56{
   height: 14rem;
 }
@@ -859,8 +871,16 @@ video {
   width: 66.666667%;
 }
 
+.w-2{
+  width: 0.5rem;
+}
+
 .w-56{
   width: 14rem;
+}
+
+.grow{
+  flex-grow: 1;
 }
 
 .cursor-pointer{
@@ -922,12 +942,16 @@ video {
   justify-items: center;
 }
 
-.gap-4{
-  gap: 1rem;
+.gap-6{
+  gap: 1.5rem;
 }
 
 .gap-2{
   gap: 0.5rem;
+}
+
+.gap-4{
+  gap: 1rem;
 }
 
 .gap-1{
@@ -972,14 +996,6 @@ video {
 
 .rounded-tl-xl{
   border-top-left-radius: 0.75rem;
-}
-
-.rounded-tl-lg{
-  border-top-left-radius: 0.5rem;
-}
-
-.rounded-tr-lg{
-  border-top-right-radius: 0.5rem;
 }
 
 .rounded-tl-full{
@@ -1148,17 +1164,12 @@ video {
   text-align: right;
 }
 
-.font-press{
-  font-family: Press\ Start\ 2P;
-}
-
 .font-poppins{
   font-family: Poppins;
 }
 
-.text-5xl{
-  font-size: 3rem;
-  line-height: 1;
+.font-press{
+  font-family: Press\ Start\ 2P;
 }
 
 .text-base{
@@ -1469,8 +1480,8 @@ video {
     background-color: rgb(237 85 136 / var(--tw-bg-opacity));
   }
 
-  .md\:bg-opacity-50{
-    --tw-bg-opacity: 0.5;
+  .md\:bg-opacity-75{
+    --tw-bg-opacity: 0.75;
   }
 
   .md\:bg-gradient-to-tr{
