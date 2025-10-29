@@ -50,7 +50,7 @@ function User(props) {
           </p>
 
           <p className="flex justify-center items-center gap-2 bg-secondary px-4 py-2 rounded-full text-white drop-shadow-text md:text-xl my-2">
-            <img src="public/gamerscore.webp" className="relative w-6 h-6 object-cover" />
+            <img src="gamerscore.webp" className="relative w-6 h-6 object-cover" />
             {gamerscore}
           </p>
         </div>

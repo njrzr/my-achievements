@@ -24,15 +24,15 @@ function App() {
           <div className="circles"></div>
           <div className="circles"></div>
           <div className="circles flex justify-center items-center">
-            <img src="public/favicon.ico" className="relative w-12 h-12" />
+            <img src="favicon.ico" className="relative w-12 h-12" />
           </div>
           <div className="circles"></div>
           <div className="circles"></div>
         </div>
       }
 
-      <User apiKey={apiKey} url={dev} userF={setUserFlag} />
-      <Achievements apiKey={apiKey} url={dev}  achievementF={setAchievementFlag} />
+      <User apiKey={apiKey} url={prod} userF={setUserFlag} />
+      <Achievements apiKey={apiKey} url={prod}  achievementF={setAchievementFlag} />
       <Footer />
     </div>
   );

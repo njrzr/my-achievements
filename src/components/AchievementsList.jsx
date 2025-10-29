@@ -72,7 +72,7 @@ function AchievementsList(props) {
               { game.achievement.currentAchievements + ' / ' + achievementsCount }
             </p>
             <p className="relative text-white font-press flex gap-4 items-cente drop-shadow shadow-black text-xl">
-              <img src="public/gamerscore.webp" className="relative w-6 h-6 object-cover" />
+              <img src="gamerscore.webp" className="relative w-6 h-6 object-cover" />
               { game.achievement.currentGamerscore + ' / ' + game.achievement.totalGamerscore }
             </p>
             <p className="text-white flex gap-2 items-center drop-shadow shadow-black text-xl">
@@ -104,7 +104,7 @@ function AchievementsList(props) {
                           </p>
 
                           <div className="absolute font-medium left-0 right-0 bottom-2 flex justify-center items-center gap-2 text-white py-1 px-3 text-sm md:text-base text-center">
-                            <img src="public/gamerscore.webp" className="relative w-6 h-6 object-cover" />
+                            <img src="gamerscore.webp" className="relative w-6 h-6 object-cover" />
 
                             { value.rewards !== undefined ? value.rewards.length !== 0 ? value.rewards[0].type !== 'Art' ?
                               `${value.rewards[0].value}` : "Art achievement" : "0" : `${value.gamerscore}`

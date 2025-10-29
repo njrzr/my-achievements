@@ -124,7 +124,7 @@ function Achievements(props) {
                   </p>
 
                   <p className="font-press flex gap-4 text-sm md:text-base font-medium text-white drop-shadow-text">
-                    <img src="public/gamerscore.webp" className="relative w-6 h-6 object-cover" />
+                    <img src="gamerscore.webp" className="relative w-6 h-6 object-cover" />
                     {value.achievement.currentGamerscore} /{" "}
                     {value.achievement.totalGamerscore}
                   </p>
