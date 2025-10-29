@@ -141,7 +141,7 @@ function AchievementsList(props) {
                           </p>
 
                           <div className="absolute font-medium left-0 right-0 bottom-2 flex justify-center items-center gap-2 text-white py-1 px-3 text-sm md:text-base text-center">
-                            <img src="public/gamerscore.webp" className="relative w-6 h-6 object-cover" />
+                            <img src="gamerscore.webp" className="relative w-6 h-6 object-cover" />
 
                             { `${value.gamerscore}` }
                             { ` · ${value.unlocked !== true ? 'Locked' : 'Unlocked'}` }
