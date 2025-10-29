@@ -49,10 +49,8 @@ function User(props) {
             {username}
           </p>
 
-          <p className="flex justify-center items-center gap-2 bg-secondary px-4 py-2 rounded-full gamerscore font-press text-white drop-shadow-text md:text-xl my-2">
-            <span className="flex items-center font-poppins justify-center text-base bg-white text-primary rounded-full w-6 h-6">
-              G
-            </span>
+          <p className="flex justify-center items-center gap-2 bg-secondary px-4 py-2 rounded-full text-white drop-shadow-text md:text-xl my-2">
+            <img src="public/gamerscore.webp" className="relative w-6 h-6 object-cover" />
             {gamerscore}
           </p>
         </div>

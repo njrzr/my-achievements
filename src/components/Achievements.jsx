@@ -123,10 +123,8 @@ function Achievements(props) {
                     <FontAwesomeIcon icon={faMedal} /> {value.achievement.currentAchievements}
                   </p>
 
-                  <p className="font-press flex items-center gap-2 text-sm md:text-base font-medium text-white drop-shadow-text">
-                    <span className="flex items-center font-poppins justify-center text-base bg-white text-primary rounded-full w-6 h-6">
-                      G
-                    </span>
+                  <p className="font-press flex gap-4 text-sm md:text-base font-medium text-white drop-shadow-text">
+                    <img src="public/gamerscore.webp" className="relative w-6 h-6 object-cover" />
                     {value.achievement.currentGamerscore} /{" "}
                     {value.achievement.totalGamerscore}
                   </p>

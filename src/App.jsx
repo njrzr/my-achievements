@@ -20,17 +20,19 @@ function App() {
   return (
     <div className="App select-none box-border flex flex-col justify-center items-center">
       {flag !== true &&
-        <div className="fixed flex justify-center items-center top-0 z-10 w-screen h-screen bg-secondary gap-6">
+        <div className="fixed flex flex-col justify-center items-center top-0 z-10 w-screen h-screen bg-secondary gap-12">
           <div className="circles"></div>
           <div className="circles"></div>
-          <div className="circles"></div>
+          <div className="circles flex justify-center items-center">
+            <img src="public/favicon.ico" className="relative w-12 h-12" />
+          </div>
           <div className="circles"></div>
           <div className="circles"></div>
         </div>
       }
 
-      <User apiKey={apiKey} url={prod} userF={setUserFlag} />
-      <Achievements apiKey={apiKey} url={prod}  achievementF={setAchievementFlag} />
+      <User apiKey={apiKey} url={dev} userF={setUserFlag} />
+      <Achievements apiKey={apiKey} url={dev}  achievementF={setAchievementFlag} />
       <Footer />
     </div>
   );

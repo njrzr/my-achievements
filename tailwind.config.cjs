@@ -26,7 +26,8 @@ module.exports = {
         'press': 'Press\\ Start\\ 2P',
         'poppins': 'Poppins',
         'pixelify': 'Pixelify\\ Sans',
-        'montserrat': 'Montserrat'
+        'montserrat': 'Montserrat',
+        'noto': 'Noto\\ Sans',
       },
       'dropShadow': {
         'text': '2px 2px 2px #9E2950'
