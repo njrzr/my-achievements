@@ -29,9 +29,9 @@ function Achievements(props) {
       .catch((error) => console.log("error", error));
 
     const setResponse = (response) => {
-      setBackground(response);
-      setUser(response.xuid);
-      setGames(response);
+      setBackground(response.content);
+      setUser(response.content.xuid);
+      setGames(response.content);
     };
 
     const setGames = (response) => {

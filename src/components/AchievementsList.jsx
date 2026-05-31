@@ -26,7 +26,7 @@ function AchievementsList(props) {
     }
   }
 
-  if (achievements.length !== 0) achievementsCount = achievements.achievements.length;
+  if (achievements.length !== 0) achievementsCount = achievements.content.achievements.length;
 
   useEffect(() => {
     toggleList !== false ?
@@ -48,9 +48,7 @@ function AchievementsList(props) {
     return number.toString(16)
   }
 
-  const indexAchievement = (index) => {
-    console.log(index)
-  }
+  const indexAchievement = (index) => {}
 
   return (
     <div className={`fixed top-0 left-0 p-2 z-20 bg-primary w-full h-screen overflow-x-hidden overflow-y-scroll scrollbar-none grow ${toggleList === true ? 'block' : 'hidden'}`}>
@@ -83,7 +81,7 @@ function AchievementsList(props) {
 
           <div className="grid md:grid-cols-3 gap-1 md:gap-2 mt-2">
             { achievements.length !== 0 ?
-                achievements.achievements.map((value, index) => {
+                achievements.content.achievements.map((value, index) => {
                   return <div className={`relative rounded-xl w-full h-60 flex items-center justify-center bg-terciary overflow-hidden shadow-sm shadow-black ${value.progressState !== 'Achieved' && value.unlocked !== true ? 'opacity-40' : 'opacity-100'}`} key={`achievement-${index}`}>
                     { game.devices.indexOf('Xbox360') == -1 &&
                       <div className={`relative w-full h-full flex flex-col justify-start gap-2`}>

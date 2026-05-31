@@ -19,15 +19,15 @@ function User(props) {
       },
     })
       .then((response) => {
-        if (typeof response.data["profileUsers"] !== 'object') return
-        setResponse(response.data)
+        if (typeof response.data.content["profileUsers"] !== 'object') return
+        setResponse(response.data.content)
       })
       .catch((err) => console.log(err));
 
     const setResponse = (response) => {
-      setPicture(response["profileUsers"][0].settings[0].value);
-      setGamerscore(response["profileUsers"][0].settings[1].value);
-      setUsername(response["profileUsers"][0].settings[2].value);
+      setPicture(response["profileUsers"][0].settings[1].value);
+      setGamerscore(response["profileUsers"][0].settings[2].value);
+      setUsername(response["profileUsers"][0].settings[0].value);
       setBio(response["profileUsers"][0].settings[7].value);
       userF(true);
     };
