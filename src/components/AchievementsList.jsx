@@ -26,7 +26,9 @@ function AchievementsList(props) {
     }
   }
 
-  if (achievements.length !== 0) achievementsCount = achievements.content.achievements.length;
+  if (achievements.length !== 0) {
+    achievementsCount = props.game.devices.indexOf('Xbox360') == -1 ? achievements.content.achievements.length : achievements.achievements.length
+  }
 
   useEffect(() => {
     toggleList !== false ?
