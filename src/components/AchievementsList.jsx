@@ -81,83 +81,84 @@ function AchievementsList(props) {
 
           <div className="grid md:grid-cols-3 gap-1 md:gap-2 mt-2">
             { achievements.length !== 0 ?
-                achievements.content.achievements.map((value, index) => {
-                  return <div className={`relative rounded-xl w-full h-60 flex items-center justify-center bg-terciary overflow-hidden shadow-sm shadow-black ${value.progressState !== 'Achieved' && value.unlocked !== true ? 'opacity-40' : 'opacity-100'}`} key={`achievement-${index}`}>
-                    { game.devices.indexOf('Xbox360') == -1 &&
-                      <div className={`relative w-full h-full flex flex-col justify-start gap-2`}>
-                        <div>
-                          {/* <FontAwesomeIcon className={`absolute left-2 bottom-2 text-4xl text-white ${value.progressState !== 'Achieved' ? 'block' : 'hidden'}`} icon={faEyeSlash} /> */}
+              game.devices.indexOf('Xbox360') == -1 ?
+              achievements.content.achievements.map((value, index) => {
+                return <div className={`relative rounded-xl w-full h-60 flex items-center justify-center bg-terciary overflow-hidden shadow-sm shadow-black ${value.progressState !== 'Achieved' && value.unlocked !== true ? 'opacity-40' : 'opacity-100'}`} key={`achievement-${index}`}>
+                <div className={`relative w-full h-full flex flex-col justify-start gap-2`}>
+                  <div>
+                    {/* <FontAwesomeIcon className={`absolute left-2 bottom-2 text-4xl text-white ${value.progressState !== 'Achieved' ? 'block' : 'hidden'}`} icon={faEyeSlash} /> */}
 
-                          <div className="flex p-2">
-                            { value.mediaAssets !== undefined &&
-                              <img className="relative bg-black text-white object-cover h-24 w-2/6 rounded-xl" src={`https://njrzr-caravaggio.vercel.app/o:webp/q:25?image=${value.mediaAssets[0].url}`} alt={`Achievement Logo #${index}`} />
-                            }
-                            <p className="text-white text-center w-4/6 py-1 px-3 text-xl md:text-2xl font-semibold flex justify-center items-center gap-2">
-                              { value.rarity.currentPercentage <= 10 && <FontAwesomeIcon icon={faGem} className="text-gold" /> } { value.name }
-                            </p>
-                          </div>
+                    <div className="flex p-2">
+                      { value.mediaAssets !== undefined &&
+                        <img className="relative bg-black text-white object-cover h-24 w-2/6 rounded-xl" src={`https://njrzr-caravaggio.vercel.app/o:webp/q:25?image=${value.mediaAssets[0].url}`} alt={`Achievement Logo #${index}`} />
+                      }
+                      <p className="text-white text-center w-4/6 py-1 px-3 text-xl md:text-2xl font-semibold flex justify-center items-center gap-2">
+                        { value.rarity.currentPercentage <= 10 && <FontAwesomeIcon icon={faGem} className="text-gold" /> } { value.name }
+                      </p>
+                    </div>
 
-                          <p className="bg-primary/50 text-white m-2 p-2 rounded-xl md:text-xl text-center">
-                            { value.progressState !== 'Achieved' ? value.lockedDescription : value.description }
-                          </p>
+                    <p className="bg-primary/50 text-white m-2 p-2 rounded-xl md:text-xl text-center">
+                      { value.progressState !== 'Achieved' ? value.lockedDescription : value.description }
+                    </p>
 
-                          <div className="absolute font-medium left-0 right-0 bottom-2 flex justify-center items-center gap-2 text-white py-1 px-3 text-sm md:text-base text-center">
-                            <img src="gamerscore.webp" className="relative w-6 h-6 object-cover" />
+                    <div className="absolute font-medium left-0 right-0 bottom-2 flex justify-center items-center gap-2 text-white py-1 px-3 text-sm md:text-base text-center">
+                      <img src="gamerscore.webp" className="relative w-6 h-6 object-cover" />
 
-                            { value.rewards !== undefined ? value.rewards.length !== 0 ? value.rewards[0].type !== 'Art' ?
-                              `${value.rewards[0].value}` : "Art achievement" : "0" : `${value.gamerscore}`
-                            }
-                            { ` · ${value.progressState !== 'Achieved' ? 'Locked' : 'Unlocked'}` }
-                            { ` · ${value.rarity.currentCategory}` }
-                            { ` - ${value.rarity.currentPercentage}%` }
-                          </div>
-                        </div>
-
-                        { value.isSecret === true && value.progressState !== 'Achieved' &&
-                          <div className={`absolute top-0 bg-white text-xl flex gap-4 items-center w-full h-full justify-center`}>
-                            <FontAwesomeIcon className="text-4xl" icon={faUserNinja} /> Secret Achievement
-                            {/* <FontAwesomeIcon className="absolute left-2 bottom-2 text-4xl" icon={faEye} /> */}
-                          </div>
-                        }
-                      </div>
-                    }
-
-                    { game.devices.indexOf('Xbox360') != -1  &&
-                      <div className={`relative w-full h-full flex flex-col justify-start gap-2`}>
-                        <div>
-                          {/* <FontAwesomeIcon className={`absolute left-2 bottom-2 text-4xl text-white ${value.unlocked !== true ? 'block' : 'hidden'}`} icon={faEyeSlash} /> */}
-
-                          <div className="flex p-2">
-                            <img className="relative bg-black object-scale-down h-24 w-2/6 rounded-xl" src={`https://njrzr-caravaggio.vercel.app/o:webp/q:100?image=http://image.xboxlive.com/global/t.${numberToHex(value.titleId)}/ach/0/${numberToHex(value.imageId)}`} alt={`Achievement Logo #${index}`} />
-                            <p className="text-white text-center w-4/6 py-1 px-3 text-xl md:text-2xl font-semibold flex justify-center items-center gap-2">
-                              { value.rarity.currentPercentage <= 10 && <FontAwesomeIcon icon={faGem} className="text-gold" /> } { value.name }
-                            </p>
-                          </div>
-
-                          <p className="bg-primary/50 text-white m-2 rounded-xl p-2 md:text-xl text-center">
-                            { value.unlocked != true ? value.lockedDescription : value.description }
-                          </p>
-
-                          <div className="absolute font-medium left-0 right-0 bottom-2 flex justify-center items-center gap-2 text-white py-1 px-3 text-sm md:text-base text-center">
-                            <img src="gamerscore.webp" className="relative w-6 h-6 object-cover" />
-
-                            { `${value.gamerscore}` }
-                            { ` · ${value.unlocked !== true ? 'Locked' : 'Unlocked'}` }
-                            { ` · ${value.rarity.currentCategory}` }
-                            { ` - ${value.rarity.currentPercentage}%` }
-                          </div>
-
-                          { value.isSecret === true && value.unlocked !== true &&
-                            <div className={`absolute top-0 bg-white text-xl flex gap-4 items-center w-full h-full justify-center`}>
-                              <FontAwesomeIcon className="text-4xl" icon={faUserNinja} /> Secret Achievement
-                              {/* <FontAwesomeIcon className="absolute left-2 bottom-2 text-4xl" icon={faEye} /> */}
-                            </div>
-                          }
-                        </div>
-                      </div>
-                    }
+                      { value.rewards !== undefined ? value.rewards.length !== 0 ? value.rewards[0].type !== 'Art' ?
+                        `${value.rewards[0].value}` : "Art achievement" : "0" : `${value.gamerscore}`
+                      }
+                      { ` · ${value.progressState !== 'Achieved' ? 'Locked' : 'Unlocked'}` }
+                      { ` · ${value.rarity.currentCategory}` }
+                      { ` - ${value.rarity.currentPercentage}%` }
+                    </div>
                   </div>
-                })
+
+                  { value.isSecret === true && value.progressState !== 'Achieved' &&
+                    <div className={`absolute top-0 bg-white text-xl flex gap-4 items-center w-full h-full justify-center`}>
+                      <FontAwesomeIcon className="text-4xl" icon={faUserNinja} /> Secret Achievement
+                      {/* <FontAwesomeIcon className="absolute left-2 bottom-2 text-4xl" icon={faEye} /> */}
+                    </div>
+                  }
+                </div>
+              </div>
+              })
+              :
+              achievements.achievements.map((value, index) => {
+                return <div className={`relative rounded-xl w-full h-60 flex items-center justify-center bg-terciary overflow-hidden shadow-sm shadow-black ${value.progressState !== 'Achieved' && value.unlocked !== true ? 'opacity-40' : 'opacity-100'}`} key={`achievement-${index}`}>
+                <div className={`relative w-full h-full flex flex-col justify-start gap-2`}>
+                <div>
+                  {/* <FontAwesomeIcon className={`absolute left-2 bottom-2 text-4xl text-white ${value.unlocked !== true ? 'block' : 'hidden'}`} icon={faEyeSlash} /> */}
+
+                  <div className="flex p-2">
+                    <img className="relative bg-black object-scale-down h-24 w-2/6 rounded-xl" src={`https://njrzr-caravaggio.vercel.app/o:webp/q:100?image=http://image.xboxlive.com/global/t.${numberToHex(value.titleId)}/ach/0/${numberToHex(value.imageId)}`} alt={`Achievement Logo #${index}`} />
+                    <p className="text-white text-center w-4/6 py-1 px-3 text-xl md:text-2xl font-semibold flex justify-center items-center gap-2">
+                      { value.rarity.currentPercentage <= 10 && <FontAwesomeIcon icon={faGem} className="text-gold" /> } { value.name }
+                    </p>
+                  </div>
+
+                  <p className="bg-primary/50 text-white m-2 rounded-xl p-2 md:text-xl text-center">
+                    { value.unlocked != true ? value.lockedDescription : value.description }
+                  </p>
+
+                  <div className="absolute font-medium left-0 right-0 bottom-2 flex justify-center items-center gap-2 text-white py-1 px-3 text-sm md:text-base text-center">
+                    <img src="gamerscore.webp" className="relative w-6 h-6 object-cover" />
+
+                    { `${value.gamerscore}` }
+                    { ` · ${value.unlocked !== true ? 'Locked' : 'Unlocked'}` }
+                    { ` · ${value.rarity.currentCategory}` }
+                    { ` - ${value.rarity.currentPercentage}%` }
+                  </div>
+
+                  { value.isSecret === true && value.unlocked !== true &&
+                    <div className={`absolute top-0 bg-white text-xl flex gap-4 items-center w-full h-full justify-center`}>
+                      <FontAwesomeIcon className="text-4xl" icon={faUserNinja} /> Secret Achievement
+                      {/* <FontAwesomeIcon className="absolute left-2 bottom-2 text-4xl" icon={faEye} /> */}
+                    </div>
+                  }
+                </div>
+                </div>
+              </div>
+              })
               : ''
             }
           </div>
@@ -168,7 +169,7 @@ function AchievementsList(props) {
 
           <div className="grid md:grid-cols-3 auto-rows-min mt-2 gap-1 md:gap-2 h-screen">
             {
-              [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18].map((value, index) => {
+              Array.from({ length: 18 }).map((value, index) => {
                 return <div className="rounded-2xl loader h-60 bg-no-repeat bg-gradient-to-l from-transparent via-secondary to-transparent shadow-sm shadow-black" key={`skeleton-${index}`}>
                 </div>
               })
