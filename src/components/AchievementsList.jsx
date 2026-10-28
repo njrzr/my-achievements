@@ -5,7 +5,7 @@ import { faXmark, faGem, faUserNinja, faMedal, faListCheck } from "@fortawesome/
 import { useEffect, useState } from "react";
 
 function AchievementsList(props) {
-  const { userId, game, toggleList, setToggle, url, apiKey } = props;
+  const { userId, game, toggleList, setToggle, url } = props;
   let [achievements, setAchievements] = useState([]);
   let gameUrl = '';
   let background = '';
@@ -36,7 +36,6 @@ function AchievementsList(props) {
         url: url,
         method: "GET",
         headers: {
-          "X-Authorization": apiKey,
           "Accept": "application/json",
           "Target-URL": gameUrl
         },
